@@ -44,8 +44,9 @@ class CouponSlide extends StatelessWidget {
             child: Image(image: AssetImage(this.imgName)),
           ),
           
-          Text(this.discount.toString(),
-          textAlign: TextAlign.left,),
+          Text("-" + this.discount.toString(),
+          textAlign: TextAlign.left,
+          style: TextStyle(fontSize: 30, color: Colors.orange),),
           Text("En la compra del combo Completo",
           textAlign: TextAlign.left,),
           Row(
