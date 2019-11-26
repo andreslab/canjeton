@@ -39,8 +39,7 @@ class CouponSlide extends StatelessWidget {
             height: radius,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(radius),
-              gradient: LinearGradient(colors: colorBorder),
-              shape: BoxShape.circle,
+              gradient: LinearGradient(colors: colorBorder)
             ),
             child: Image(image: AssetImage(this.imgName)),
           ),
