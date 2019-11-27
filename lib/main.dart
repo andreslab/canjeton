@@ -3,6 +3,8 @@ import 'pages/login.dart';
 import 'pages/register.dart';
 import 'pages/home.dart';
 import 'pages/navigator.dart';
+import 'pages/favorite.dart';
+import 'pages/ticket.dart';
 
 void main() => runApp(MyApp());
 
@@ -16,12 +18,15 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue
       ),
-      home: NavigatorPage(),
+      home: LoginPage(),
       routes: {
         "login": (context) => LoginPage(),
         "register": (context) => RegisterPage(),
         "home": (context) => HomePage(),
-        "navigator": (context) => NavigatorPage()
+        "navigator": (context) => NavigatorPage(),
+        "register": (context) => RegisterPage(),
+        "favorite": (context) => FavoritePage(),
+        "ticket": (context) => TicketPage()
       },
     );
   }  
