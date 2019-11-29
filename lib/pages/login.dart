@@ -93,10 +93,10 @@ class _LoginPageState extends State<LoginPage> {
                                       BoxShadow(
                                           color: Colors.black26, blurRadius: 25)
                                     ])),
-                            Text("Hello again. \nWelcome back",
+                            /*Text("Hello again. \nWelcome back",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
-                                    fontSize: 18, fontWeight: FontWeight.w300)),
+                                    fontSize: 18, fontWeight: FontWeight.w300)),*/
                           ],
                         ),
                         Column(
@@ -107,23 +107,23 @@ class _LoginPageState extends State<LoginPage> {
                               child: Form(
                                 key: _formKey,
                                                               child: Column(children: <Widget>[
-                                  InputText(label: "EMAIL ADDRESS",
+                                  InputText(label: "Correo electrónico",
                                   validator: (String text) {
                                     if (text.contains("@")) {
                                       _email = text;
                                       return null;
                                     }
-                                    return "Invalid Email";
+                                    return "Correo inválido";
                                     },
                                     inputType: TextInputType.emailAddress,),
                                   SizedBox(height: 20,),
-                                  InputText(label: "PASSWORD",
+                                  InputText(label: "Contraseña",
                                   validator: (String text) {
                                      if (text.isNotEmpty && text.length > 5) {
                                       _password = text;
                                       return null;
                                     }
-                                    return "Invalid Password";
+                                    return "Contraseña invalida";
                                   },
                                   isSecure: true,)
                                 ],),
@@ -138,7 +138,7 @@ class _LoginPageState extends State<LoginPage> {
                                 color: Colors.orange,
                                 borderRadius: BorderRadius.circular(4),
                                 onPressed: () => _submit(),
-                                child: Text("Sign up",
+                                child: Text("Ingresar",
                                     style: TextStyle(fontSize: 20)),
                               ),
                             ),
@@ -159,11 +159,11 @@ class _LoginPageState extends State<LoginPage> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
-                                Text("Already have a account",
+                                Text("No posee una cuenta",
                                 style: TextStyle(fontSize: 16,
                                 color: Colors.black54)),
                                 CupertinoButton(
-                                  child: Text("Sign up",
+                                  child: Text("regístrate",
                                   style: TextStyle(fontSize: 16, color: Colors.pinkAccent)),
                                   onPressed: ()=>Navigator.pushNamed(context, "register"),
                                 )

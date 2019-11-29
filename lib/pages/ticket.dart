@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import '../widgets/coupon_item_min.dart';
 
 class TicketPage extends StatefulWidget {
   @override
@@ -12,31 +13,36 @@ class _TicketPageState extends State<TicketPage> {
     final size = MediaQuery.of(context).size;
     return Scaffold(
       body: Container(
-      width: size.width,
-      height: size.height,
-      child: Column(children: <Widget>[
-        Text("TAB BAR"),
-          ListView(
-            children: <Widget>[
-              ListTile(
-                leading: Icon(Icons.shop),
-                title: Text("Cupon1"),
-              ),
-              ListTile(
-                leading: Icon(Icons.shop),
-                title: Text("Cupon1"),
-              ),
-              ListTile(
-                leading: Icon(Icons.shop),
-                title: Text("Cupon1"),
-              ),
-              ListTile(
-                leading: Icon(Icons.shop),
-                title: Text("Cupon1"),
-              )
-            ],
-          )
-        ],),
+        child: ListView(
+  padding: const EdgeInsets.all(8),
+  children: <Widget>[
+    Container(
+      
+      height: 120,
+      child: CouponItemMin(),
+    ),
+    Container(
+      height: 120,
+      child: CouponItemMin(),
+    ),
+    Container(
+      height: 120,
+      child: CouponItemMin(),
+    ),
+    Container(
+      height: 120,
+      child: CouponItemMin(),
+    ),
+    Container(
+      height: 120,
+      child: CouponItemMin(),
+    ),
+    Container(
+      height: 120,
+      child: CouponItemMin(),
+    ),
+  ],
+),
     ),
     );
   }

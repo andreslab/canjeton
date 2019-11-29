@@ -41,7 +41,18 @@ class CouponSlide extends StatelessWidget {
               borderRadius: BorderRadius.circular(radius),
               gradient: LinearGradient(colors: colorBorder)
             ),
-            child: Image(image: AssetImage(this.imgName)),
+            child: Container(
+            width: radius / 2,
+            height: radius / 2,
+            decoration: new BoxDecoration(
+                shape: BoxShape.circle,
+                image: new DecorationImage(
+                    fit: BoxFit.cover,
+                    image: new NetworkImage(
+                        "https://media.metrolatam.com/2019/10/24/capturadepantall-41ce6991af50c8087af5dafb6c0e6785-600x400.jpg")
+                )
+            )
+        ),
           ),
           
           Text("-" + this.discount.toString(),

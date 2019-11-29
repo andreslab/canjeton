@@ -93,10 +93,6 @@ class _RegisterPageState extends State<RegisterPage> {
                                       BoxShadow(
                                           color: Colors.black26, blurRadius: 25)
                                     ])),
-                            Text("Hello again. \nWelcome back",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    fontSize: 18, fontWeight: FontWeight.w300)),
                           ],
                         ),
                         Column(
@@ -107,39 +103,39 @@ class _RegisterPageState extends State<RegisterPage> {
                               child: Form(
                                 key: _formKey,
                                                               child: Column(children: <Widget>[
-                                  InputText(label: "USERNAME",
+                                  InputText(label: "Nombre y Apellido",
                                   validator: (String text) {
                                     //solo acepta letras y numeros, validado con expresion regular
                                     if (RegExp(r'^[a-zA-Z0-9]+$').hasMatch(text)) {
                                       _username = text;
                                       return null;
                                     }
-                                    return "Invalid Username";
+                                    return "Campo inválido";
                                     },),
                                   SizedBox(height: 20,),
-                                  InputText(label: "EMAIL ADDRESS",
+                                  InputText(label: "Dirección de correo",
                                   validator: (String text) {
                                     if (text.contains("@")) {
                                       _email = text;
                                       return null;
                                     }
-                                    return "Invalid Email";
+                                    return "Correo inválido";
                                     },
                                     inputType: TextInputType.emailAddress,),
                                   SizedBox(height: 20,),
-                                  InputText(label: "PASSWORD",
+                                  InputText(label: "Contraseña",
                                   validator: (String text) {
                                      if (text.isNotEmpty && text.length > 5) {
                                       _password = text;
                                       return null;
                                     }
-                                    return "Invalid Password";
+                                    return "Contraseña inválido";
                                   },
                                   isSecure: true,)
                                 ],),
                               )
                             ),
-                            SizedBox(height: 40,),
+                            SizedBox(height: 30,),
                             ConstrainedBox(
                               constraints:
                                   BoxConstraints(maxWidth: 350, minWidth: 350),
@@ -148,12 +144,41 @@ class _RegisterPageState extends State<RegisterPage> {
                                 color: Colors.orange,
                                 borderRadius: BorderRadius.circular(4),
                                 onPressed: () => _submit(),
-                                child: Text("Sign up",
-                                    style: TextStyle(fontSize: 20)),
+                                child: Text("Registrarse",
+                                    style: TextStyle(fontSize: 18)),
                               ),
                             ),
-                            SizedBox(height: 20,),
-                            Row(
+                            SizedBox(height: 10,),
+                            Text("o", textAlign: TextAlign.center,),
+                            SizedBox(height: 10,),
+                            ConstrainedBox(
+                              constraints:
+                                  BoxConstraints(maxWidth: 350, minWidth: 350),
+                              child: CupertinoButton(
+                                padding: EdgeInsets.symmetric(vertical: 17),
+                                color: Colors.blue,
+                                borderRadius: BorderRadius.circular(4),
+                                onPressed: () => print("Facebook login"),
+                                child: Text("Facebook",
+                                    style: TextStyle(fontSize: 18)),
+                              ),
+                            ),
+                            SizedBox(height: 10,),
+                            ConstrainedBox(
+                              constraints:
+                                  BoxConstraints(maxWidth: 350, minWidth: 350),
+                              child: CupertinoButton(
+                                padding: EdgeInsets.symmetric(vertical: 17),
+                                color: Colors.red,
+                                borderRadius: BorderRadius.circular(4),
+                                onPressed: () => print("Google login"),
+                                child: Text("Google",
+                                    style: TextStyle(fontSize: 18)),
+                              ),
+                            ),
+                            SizedBox(height: 10,),
+                            Text("Al crear una cuenta acepta los nuestros\n términos de uso y política de privacidad", textAlign: TextAlign.center, style: TextStyle(fontSize: 12)),
+                            /*Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
                                 Text("Already have a account",
@@ -165,7 +190,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                   onPressed: ()=>Navigator.pop(context),
                                 )
                               ],
-                            ),
+                            ),*/
                             SizedBox(height: size.height*0.03,)
                           ],
                         )
@@ -174,7 +199,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                 ),
               )
-              ,Positioned(
+              /*,Positioned(
                 left: 10,
                 top: 10,
                 child: SafeArea(
@@ -187,7 +212,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     padding: EdgeInsets.all(10),
                   ),
                 ),
-              )
+              )*/
             ,_isFetching ? Positioned.fill(
                 child: Container(
                   color: Colors.black45,
