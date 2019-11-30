@@ -40,7 +40,7 @@ class _RegisterPageState extends State<RegisterPage> {
       });
       if (isOk){
         print("REGISTER");
-        Navigator.pushNamed(context, "home");
+        Navigator.pushNamed(context, "sucess");
       }
     }
   }

@@ -25,7 +25,8 @@ class _NavigatorPageState extends State<NavigatorPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      /*appBar:
+      AppBar(
           title: const Text('Canjetón'),
           actions: <Widget>[
             // action button
@@ -44,8 +45,15 @@ class _NavigatorPageState extends State<NavigatorPage> {
             ),
             // overflow menu
           ],
-        ),
-      body: screens[_currentIndex],
+        ),*/
+      body: Column(
+        children : [
+        CustomAppBar(),
+        Expanded(child: screens[_currentIndex],)
+         ,]
+      ),
+      
+     
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         type: BottomNavigationBarType.fixed,
@@ -74,5 +82,25 @@ class _NavigatorPageState extends State<NavigatorPage> {
         },
       ),
     );
+  }
+}
+
+class CustomAppBar extends StatelessWidget {
+
+  final double sizeBar = 66;
+  @override
+  Widget build(BuildContext context) {
+    final double statusBarSize = MediaQuery.of(context).padding.top;
+    return Container(
+      padding: EdgeInsets.only(top: statusBarSize),
+      height: sizeBar + statusBarSize,
+      child: Row(
+        children: <Widget>[
+          RaisedButton(child: Text("b1"), onPressed: () => print(""),),
+          Expanded(child: Text("Canjeton"),),
+          RaisedButton(child: Text("b2"), onPressed: () => print(""),)
+        ],
+      )
+      );
   }
 }

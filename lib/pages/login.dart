@@ -15,7 +15,7 @@ class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
   final _authAPI = AuthAPI();
 
-  var _username = '', _email = '', _password = '';
+  var _email = '', _password = '';
   var _isFetching = false;
 
   @override
