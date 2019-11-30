@@ -1,3 +1,3 @@
 class AppConfig{
-  static const apiHost = "http://localhost:8080";
+  static const apiHost = "http://canjeton.unidadeducativaluischiribogamanrique.edu.ec";
 }

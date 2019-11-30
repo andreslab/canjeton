@@ -33,7 +33,7 @@ class _LoginPageState extends State<LoginPage> {
         _isFetching = true;
       });
       //call request
-      final isOk = await _authAPI.register(context, username : _username, email : _email, password: _password);
+      final isOk = await _authAPI.login(context, email : _email, password: _password);
       
       setState(() {
         _isFetching = false;
