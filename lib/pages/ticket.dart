@@ -13,7 +13,17 @@ class _TicketPageState extends State<TicketPage> {
     final size = MediaQuery.of(context).size;
     return Scaffold(
       body: Container(
-        child: ListView(
+        child: Column(
+          children: <Widget>[
+            SizedBox(height: 10,),
+            Row(children: <Widget>[
+              RaisedButton(child: Text("btn 1"), onPressed: ()=> print(""),),
+              Expanded(flex: 2, child: RaisedButton(child: Text("btn 2"), onPressed: ()=> print(""),)),
+              RaisedButton(child: Text("btn 3"), onPressed: ()=> print(""),)
+            ],),
+            SizedBox(height: 10,),
+            Expanded(
+                          child: ListView(
   padding: const EdgeInsets.all(8),
   children: <Widget>[
     Container(
@@ -43,6 +53,9 @@ class _TicketPageState extends State<TicketPage> {
     ),
   ],
 ),
+            ),
+          ],
+        ),
     ),
     );
   }

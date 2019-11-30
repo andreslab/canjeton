@@ -18,7 +18,7 @@ class _HomePageState extends State<HomePage> {
           children: <Widget>[
             Container(
               width: size.width * 0.8,
-              height: size.height * 0.6,
+              height: size.height * 0.5,
               child: PageView(
                 children: <Widget>[
                   Container(
@@ -33,17 +33,24 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
             ),
+            SizedBox(height: 20,),
             Container(
+              padding: EdgeInsets.only(top: 40, left: 40, right: 40),
               width: size.width,
               height: size.height * 0.2,
               child: Column(
                 children: <Widget>[
-                  Text("Categoria", textAlign: TextAlign.left,),
+                  Expanded(child: Row(
+                    children: <Widget>[
+                      Expanded(child: Text("Categoria", textAlign: TextAlign.left, style: TextStyle(fontSize: 40),)),
+                      RaisedButton(child: Icon(Icons.category),onPressed: () => print("show categories"),)
+                    ],
+                  )),
                   Container(
                     width: size.width,
                     child: Row(children: <Widget>[
                       Icon(Icons.restaurant),
-                      Icon(Icons.help),
+                      Expanded(child: Icon(Icons.help), flex: 2,),
                       Icon(Icons.alarm),
                     ],),
                   )
@@ -56,4 +63,10 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
+
+
+  
 }
+
+
+

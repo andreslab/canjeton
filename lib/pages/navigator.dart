@@ -96,9 +96,9 @@ class CustomAppBar extends StatelessWidget {
       height: sizeBar + statusBarSize,
       child: Row(
         children: <Widget>[
-          RaisedButton(child: Text("b1"), onPressed: () => print(""),),
-          Expanded(child: Text("Canjeton"),),
-          RaisedButton(child: Text("b2"), onPressed: () => print(""),)
+          IconButton(icon: Icon(Icons.add_circle), onPressed: () => print(""),),
+          Expanded(child: Text("Canjeton", textAlign: TextAlign.center,),),
+          IconButton(icon: Icon(Icons.search), onPressed: () => print(""),),
         ],
       )
       );
