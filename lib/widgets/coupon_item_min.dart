@@ -27,7 +27,10 @@ class CouponItemMin extends StatelessWidget {
               Text("Combo completo", style: TextStyle(fontSize: 15, color: Colors.orange))
             ],
           ),
-          IconButton(icon: Icon(Icons.add),)
+          IconButton(icon: Icon(Icons.add),
+          onPressed: (){
+            print("");
+          },)
         ],
       ),
     );
