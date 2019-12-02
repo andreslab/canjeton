@@ -1,7 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
+class CouponItemMinModel {
+  String urlImg;
+  String title;
+  String discount;
+  String description;
+}
+
 class CouponItemMin extends StatelessWidget {
+
+  final CouponItemMinModel  couponItemMinModel ;
+
+  const CouponItemMin(
+      {Key key,
+      @required this.couponItemMinModel ,})
+      : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Container(

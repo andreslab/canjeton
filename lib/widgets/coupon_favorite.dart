@@ -1,7 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
+class CouponFavoriteModel {
+  String urlImg;
+  String localName;
+}
+
 class CouponFavorite extends StatelessWidget {
+
+  final CouponFavoriteModel couponFavoriteModel;
+
+  const CouponFavorite(
+      {Key key,
+      @required this.couponFavoriteModel,})
+      : super(key: key);
+
+
   @override
   Widget build(BuildContext context) {
     return Container(

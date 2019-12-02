@@ -1,30 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
-
-class CouponDetailModel {
-  String urlImg;
+class CodeQrDetailModel {
+  String urlQr;
   String title;
-  bool isFavorite;
   String discount;
   String description;
-  DateTime dateExpire;
+  CodeQrDetailModel({this.urlQr, this.title, this.discount, this.description});
 }
 
-class CouponDetail extends StatefulWidget {
+class CodeQrDetail extends StatefulWidget {
 
-  final CouponDetailModel couponDetailModel;
+  final CodeQrDetailModel codeQrDetailModel;
 
-  const CouponDetail(
+  const CodeQrDetail(
       {Key key,
-      @required this.couponDetailModel,})
+      @required this.codeQrDetailModel,})
       : super(key: key);
 
   @override
-  _CouponDetailState createState() => _CouponDetailState();
+  _CodeQrDetailState createState() => _CodeQrDetailState();
 }
 
-class _CouponDetailState extends State<CouponDetail> {
+class _CodeQrDetailState extends State<CodeQrDetail> {
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
