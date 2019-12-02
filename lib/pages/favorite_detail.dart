@@ -8,6 +8,21 @@ class FavoriteDetailPage extends StatefulWidget {
 }
 
 class _FavoriteDetailPageState extends State<FavoriteDetailPage> {
+  List<CouponItemMinModel> data = [
+    CouponItemMinModel(
+        title: "Hamburguesa",
+        description: "Hamburuesa con queso",
+        urlImg:
+            "https://media.metrolatam.com/2019/10/24/capturadepantall-41ce6991af50c8087af5dafb6c0e6785-600x400.jpg",
+        discount: "-30%"),
+    CouponItemMinModel(
+        title: "Hamburguesa",
+        description: "Hamburuesa con queso",
+        urlImg:
+            "https://media.metrolatam.com/2019/10/24/capturadepantall-41ce6991af50c8087af5dafb6c0e6785-600x400.jpg",
+        discount: "-30%"),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,37 +32,14 @@ class _FavoriteDetailPageState extends State<FavoriteDetailPage> {
           Container(),
           Text("Este local tiene 3 cupones disponibles"),
           Expanded(
-                          child: ListView(
-  padding: const EdgeInsets.all(8),
-  children: <Widget>[
-    Container(
-      
-      height: 120,
-      child: CouponItemMin(),
-    ),
-    Container(
-      height: 120,
-      child: CouponItemMin(),
-    ),
-    Container(
-      height: 120,
-      child: CouponItemMin(),
-    ),
-    Container(
-      height: 120,
-      child: CouponItemMin(),
-    ),
-    Container(
-      height: 120,
-      child: CouponItemMin(),
-    ),
-    Container(
-      height: 120,
-      child: CouponItemMin(),
-    ),
-  ],
-),
-            ),
+              child: ListView.builder(
+            itemCount: data.length,
+            itemBuilder: (context, position) {
+              return CouponItemMin(
+                couponItemMinModel: data[position],
+              );
+            },
+          )),
         ],
       ),
     );

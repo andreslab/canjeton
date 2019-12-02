@@ -39,7 +39,7 @@ class _CodeQrDetailState extends State<CodeQrDetail> {
           Positioned(
             top: -100,
             child: Hero(
-              tag: 'detail_coupon',
+              tag: 'code_qr',
               child: Container(
                   width: radius,
                   height: radius,
@@ -48,7 +48,7 @@ class _CodeQrDetailState extends State<CodeQrDetail> {
                       image: new DecorationImage(
                           fit: BoxFit.cover,
                           image: new NetworkImage(
-                              "https://media.metrolatam.com/2019/10/24/capturadepantall-41ce6991af50c8087af5dafb6c0e6785-600x400.jpg")))),
+                              widget.codeQrDetailModel.urlQr)))),
             ),
           ),
           Container(
@@ -61,7 +61,7 @@ class _CodeQrDetailState extends State<CodeQrDetail> {
                 Row(
                   children: <Widget>[
                     Expanded(
-                      child: Text("Hamburguesa del colorado"),
+                      child: Text(widget.codeQrDetailModel.title),
                     ),
                     Icon(Icons.favorite)
                   ],
@@ -73,7 +73,7 @@ class _CodeQrDetailState extends State<CodeQrDetail> {
                   children: <Widget>[
                     Expanded(
                       child: Text(
-                        "-30%",
+                        widget.codeQrDetailModel.discount,
                         style: TextStyle(fontSize: 30, color: Colors.orange),
                       ),
                     ),
@@ -84,7 +84,7 @@ class _CodeQrDetailState extends State<CodeQrDetail> {
                   height: 20,
                 ),
                 Text(
-                    "En la compra del combo completo.\n 1 Homburguesa con queso 1 Papas fritas, 1 Cocacola mediana."),
+                    widget.codeQrDetailModel.description),
                 Row(
                   children: <Widget>[
                     Icon(Icons.calendar_today),
@@ -93,10 +93,6 @@ class _CodeQrDetailState extends State<CodeQrDetail> {
                         children: <Widget>[
                           Text(
                             "Expira",
-                            textAlign: TextAlign.left,
-                          ),
-                          Text(
-                            "30 Dic 2019",
                             textAlign: TextAlign.left,
                           )
                         ],

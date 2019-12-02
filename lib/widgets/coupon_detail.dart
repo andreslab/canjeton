@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
-
 class CouponDetailModel {
   String urlImg;
   String title;
@@ -9,16 +8,22 @@ class CouponDetailModel {
   String discount;
   String description;
   DateTime dateExpire;
+  CouponDetailModel(
+      {this.urlImg,
+      this.title,
+      this.isFavorite,
+      this.discount,
+      this.description,
+      this.dateExpire});
 }
 
 class CouponDetail extends StatefulWidget {
-
   final CouponDetailModel couponDetailModel;
 
-  const CouponDetail(
-      {Key key,
-      @required this.couponDetailModel,})
-      : super(key: key);
+  const CouponDetail({
+    Key key,
+    @required this.couponDetailModel,
+  }) : super(key: key);
 
   @override
   _CouponDetailState createState() => _CouponDetailState();
@@ -49,7 +54,7 @@ class _CouponDetailState extends State<CouponDetail> {
                       image: new DecorationImage(
                           fit: BoxFit.cover,
                           image: new NetworkImage(
-                              "https://media.metrolatam.com/2019/10/24/capturadepantall-41ce6991af50c8087af5dafb6c0e6785-600x400.jpg")))),
+                              widget.couponDetailModel.urlImg)))),
             ),
           ),
           Container(
@@ -62,7 +67,7 @@ class _CouponDetailState extends State<CouponDetail> {
                 Row(
                   children: <Widget>[
                     Expanded(
-                      child: Text("Hamburguesa del colorado"),
+                      child: Text(widget.couponDetailModel.title),
                     ),
                     Icon(Icons.favorite)
                   ],
@@ -74,7 +79,7 @@ class _CouponDetailState extends State<CouponDetail> {
                   children: <Widget>[
                     Expanded(
                       child: Text(
-                        "-30%",
+                        widget.couponDetailModel.discount,
                         style: TextStyle(fontSize: 30, color: Colors.orange),
                       ),
                     ),
@@ -84,8 +89,7 @@ class _CouponDetailState extends State<CouponDetail> {
                 SizedBox(
                   height: 20,
                 ),
-                Text(
-                    "En la compra del combo completo.\n 1 Homburguesa con queso 1 Papas fritas, 1 Cocacola mediana."),
+                Text(widget.couponDetailModel.description),
                 Row(
                   children: <Widget>[
                     Icon(Icons.calendar_today),
@@ -97,7 +101,13 @@ class _CouponDetailState extends State<CouponDetail> {
                             textAlign: TextAlign.left,
                           ),
                           Text(
-                            "30 Dic 2019",
+                            widget.couponDetailModel.dateExpire.day.toString() +
+                                " " +
+                                widget.couponDetailModel.dateExpire.month
+                                    .toString() +
+                                " " +
+                                widget.couponDetailModel.dateExpire.year
+                                    .toString(),
                             textAlign: TextAlign.left,
                           )
                         ],

@@ -3,6 +3,29 @@ import 'package:flutter/cupertino.dart';
 import '../widgets/coupon_favorite.dart';
 
 class FavoritePage extends StatelessWidget {
+  List<CouponFavoriteModel> data = [
+    CouponFavoriteModel(
+        localName: "KFC",
+        urlImg:
+            "https://logosmarcas.com/wp-content/uploads/2018/11/KFC-S%C3%ADmbolo.png"),
+    CouponFavoriteModel(
+        localName: "KFC",
+        urlImg:
+            "https://logosmarcas.com/wp-content/uploads/2018/11/KFC-S%C3%ADmbolo.png"),
+    CouponFavoriteModel(
+        localName: "KFC",
+        urlImg:
+            "https://logosmarcas.com/wp-content/uploads/2018/11/KFC-S%C3%ADmbolo.png"),
+    CouponFavoriteModel(
+        localName: "KFC",
+        urlImg:
+            "https://logosmarcas.com/wp-content/uploads/2018/11/KFC-S%C3%ADmbolo.png"),
+    CouponFavoriteModel(
+        localName: "KFC",
+        urlImg:
+            "https://logosmarcas.com/wp-content/uploads/2018/11/KFC-S%C3%ADmbolo.png")
+  ];
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -12,36 +35,12 @@ class FavoritePage extends StatelessWidget {
           children: <Widget>[
             Text("Favoritos"),
             Expanded(
-              child: ListView(
-                padding: const EdgeInsets.all(8),
-                children: <Widget>[
-                  Container(
-                    height: 120,
-                    child: CouponFavorite(),
-                  ),
-                  Container(
-                    height: 120,
-                    child: CouponFavorite(),
-                  ),
-                  Container(
-                    height: 120,
-                    child: CouponFavorite(),
-                  ),
-                  Container(
-                    height: 120,
-                    child: CouponFavorite(),
-                  ),
-                  Container(
-                    height: 120,
-                    child: CouponFavorite(),
-                  ),
-                  Container(
-                    height: 120,
-                    child: CouponFavorite(),
-                  ),
-                ],
-              ),
-            ),
+                child: ListView.builder(
+              itemCount: data.length,
+              itemBuilder: (context, position) {
+                return CouponFavorite(couponFavoriteModel: data[position]);
+              },
+            )),
           ],
         ),
       ),

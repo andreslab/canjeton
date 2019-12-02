@@ -8,6 +8,14 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
+  List<CouponSlideModel> data = [
+    CouponSlideModel(title: "", imgName: "", isFavorite: true, discount: 23.2,dateExpire: DateTime.now() ),
+    CouponSlideModel(title: "", imgName: "", isFavorite: true, discount: 23.2,dateExpire: DateTime.now() ),
+    CouponSlideModel(title: "", imgName: "", isFavorite: true, discount: 23.2,dateExpire: DateTime.now() ),
+    CouponSlideModel(title: "", imgName: "", isFavorite: true, discount: 23.2,dateExpire: DateTime.now() ),
+    CouponSlideModel(title: "", imgName: "", isFavorite: true, discount: 23.2,dateExpire: DateTime.now() ),
+  ];
   
   @override
   Widget build(BuildContext context) {
@@ -19,19 +27,14 @@ class _HomePageState extends State<HomePage> {
             Container(
               width: size.width * 0.8,
               height: size.height * 0.5,
-              child: PageView(
-                children: <Widget>[
-                  Container(
-                    child: CouponSlide(title: "Hamburguesas del Colorado",imgName: "lib/res/img/img_hamb.jpg",isFavorite:false,discount:30.0,dateExpire:DateTime.now()),
-                  ),
-                  Container(
-                    child: CouponSlide(title: "Hamburguesas del Colorado",imgName: "lib/res/img/img_hamb.jpg",isFavorite:false,discount:30.0,dateExpire:DateTime.now()),
-                  ),
-                  Container(
-                    child: CouponSlide(title: "Hamburguesas del Colorado",imgName: "lib/res/img/img_hamb.jpg",isFavorite:false,discount:30.0,dateExpire:DateTime.now()),
-                  ),
-                ],
-              ),
+              child:
+              PageView.builder(
+                itemCount: data.length,
+                itemBuilder: (context, position){
+                  return CouponSlide(couponSlideModel: data[position]);
+                },
+
+              )
             ),
             SizedBox(height: 20,),
             Container(

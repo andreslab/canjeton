@@ -1,20 +1,22 @@
 import 'package:canjeton/widgets/coupon_detail.dart';
 import 'package:flutter/material.dart';
 
-class CouponSlide extends StatelessWidget {
+class CouponSlideModel {
   final String title;
   final String imgName;
   final bool isFavorite;
   final double discount;
   final DateTime dateExpire;
+  CouponSlideModel({this.title, this.imgName, this.isFavorite, this.discount, this.dateExpire});
+}
+
+class CouponSlide extends StatelessWidget {
+  
+  final CouponSlideModel couponSlideModel;
 
   const CouponSlide(
       {Key key,
-      @required this.title,
-      @required this.imgName,
-      @required this.isFavorite,
-      @required this.discount,
-      @required this.dateExpire})
+      this.couponSlideModel})
       : super(key: key);
 
   @override
@@ -35,7 +37,7 @@ class CouponSlide extends StatelessWidget {
             children: <Widget>[
               Row(
                 children: <Widget>[
-                  Expanded(child: Text(this.title)),
+                  Expanded(child: Text(this.couponSlideModel.title)),
                   IconButton(
                     icon: Icon(Icons.favorite),
                     onPressed: () {
@@ -65,7 +67,7 @@ class CouponSlide extends StatelessWidget {
               ),
               Expanded(
                 child: Text(
-                  "-" + this.discount.toString(),
+                  "-" + this.couponSlideModel.discount.toString(),
                   textAlign: TextAlign.left,
                   style: TextStyle(fontSize: 50, color: Colors.orange),
                 ),
@@ -87,11 +89,11 @@ class CouponSlide extends StatelessWidget {
                         textAlign: TextAlign.left,
                       ),
                       Text(
-                        this.dateExpire.day.toString() +
+                        this.couponSlideModel.dateExpire.day.toString() +
                             " " +
-                            this.dateExpire.month.toString() +
+                            this.couponSlideModel.dateExpire.month.toString() +
                             " " +
-                            this.dateExpire.year.toString(),
+                            this.couponSlideModel.dateExpire.year.toString(),
                         textAlign: TextAlign.left,
                       )
                     ],
