@@ -6,6 +6,7 @@ import 'pages/navigator.dart';
 import 'pages/favorite.dart';
 import 'pages/ticket.dart';
 import 'pages/register_sucess.dart';
+import 'pages/search.dart';
 
 void main() => runApp(MyApp());
 
@@ -28,7 +29,8 @@ class MyApp extends StatelessWidget {
         "register": (context) => RegisterPage(),
         "favorite": (context) => FavoritePage(),
         "ticket": (context) => TicketPage(),
-        "sucess": (context) => RegisterSucessPage()
+        "sucess": (context) => RegisterSucessPage(),
+        "search": (context) => SearchPage()
       },
     );
   }  
