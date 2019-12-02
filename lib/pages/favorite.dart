@@ -12,40 +12,39 @@ class FavoritePage extends StatelessWidget {
           children: <Widget>[
             Text("Favoritos"),
             Expanded(
-                          child: ListView(
-  padding: const EdgeInsets.all(8),
-  children: <Widget>[
-    Container(
-      
-      height: 120,
-      child: CouponFavorite(),
-    ),
-    Container(
-      height: 120,
-      child: CouponFavorite(),
-    ),
-    Container(
-      height: 120,
-      child: CouponFavorite(),
-    ),
-    Container(
-      height: 120,
-      child: CouponFavorite(),
-    ),
-    Container(
-      height: 120,
-      child: CouponFavorite(),
-    ),
-    Container(
-      height: 120,
-      child: CouponFavorite(),
-    ),
-  ],
-),
+              child: ListView(
+                padding: const EdgeInsets.all(8),
+                children: <Widget>[
+                  Container(
+                    height: 120,
+                    child: CouponFavorite(),
+                  ),
+                  Container(
+                    height: 120,
+                    child: CouponFavorite(),
+                  ),
+                  Container(
+                    height: 120,
+                    child: CouponFavorite(),
+                  ),
+                  Container(
+                    height: 120,
+                    child: CouponFavorite(),
+                  ),
+                  Container(
+                    height: 120,
+                    child: CouponFavorite(),
+                  ),
+                  Container(
+                    height: 120,
+                    child: CouponFavorite(),
+                  ),
+                ],
+              ),
             ),
           ],
         ),
-    ),
+      ),
     );
   }
 }

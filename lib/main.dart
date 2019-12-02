@@ -7,6 +7,7 @@ import 'pages/favorite.dart';
 import 'pages/ticket.dart';
 import 'pages/register_sucess.dart';
 import 'pages/search.dart';
+import 'pages/favorite_detail.dart';
 
 void main() => runApp(MyApp());
 
@@ -30,7 +31,8 @@ class MyApp extends StatelessWidget {
         "favorite": (context) => FavoritePage(),
         "ticket": (context) => TicketPage(),
         "sucess": (context) => RegisterSucessPage(),
-        "search": (context) => SearchPage()
+        "search": (context) => SearchPage(),
+        "favorite_detail": (context) => FavoriteDetailPage()
       },
     );
   }  
