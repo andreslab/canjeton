@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import '../widgets/coupon_save_item.dart';
-import '../widgets/ticket_type.dart';
 
-class TicketPage extends StatefulWidget {
+class TicketTypePage extends StatefulWidget {
   @override
-  _TicketPageState createState() => _TicketPageState();
+  _TicketTypePageState createState() => _TicketTypePageState();
 }
 
-class _TicketPageState extends State<TicketPage> {
+class _TicketTypePageState extends State<TicketTypePage> {
+
   List<CouponSaveModel> data = [
     CouponSaveModel(
         title: "Hamburguesa",
@@ -49,51 +49,14 @@ class _TicketPageState extends State<TicketPage> {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
     return Scaffold(
       body: Container(
-        child: Column(
-          children: <Widget>[
-            SizedBox(
-              height: 10,
-            ),
-            Row(
-              children: <Widget>[
-                RaisedButton(
-                  child: Text("btn 1"),
-                  onPressed: () => print(""),
-                ),
-                Expanded(
-                    flex: 2,
-                    child: RaisedButton(
-                      child: Text("btn 2"),
-                      onPressed: () => print(""),
-                    )),
-                RaisedButton(
-                  child: Text("btn 3"),
-                  onPressed: () => print(""),
-                )
-              ],
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Expanded(
-                child: /*ListView.builder(
+        child: ListView.builder(
               itemCount: data.length,
               itemBuilder: (context, position) {
                 return CouponSaveItem(couponSaveItemModel: data[position]);
               },
-            )*/
-             PageView.builder(
-                itemCount: 3,
-                itemBuilder: (context, position){
-                  return TicketTypePage();
-                },
-              )
             ),
-          ],
-        ),
       ),
     );
   }
