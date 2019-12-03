@@ -1,29 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'coupon_ad_slide.dart';
 
-class CodeQrDetailModel {
-  String urlQr;
-  String title;
-  String discount;
-  String description;
-  CodeQrDetailModel({this.urlQr, this.title, this.discount, this.description});
-}
 
-class CodeQrDetail extends StatefulWidget {
+class CouponAdDetail extends StatefulWidget {
+  final CouponAdModel couponAdDetailModel;
 
-  final CodeQrDetailModel codeQrDetailModel;
-
-  const CodeQrDetail(
-      {Key key,
-      @required this.codeQrDetailModel,})
-      : super(key: key);
+  const CouponAdDetail({
+    Key key,
+    @required this.couponAdDetailModel,
+  }) : super(key: key);
 
   @override
-  _CodeQrDetailState createState() => _CodeQrDetailState();
+  _CouponAdDetailState createState() => _CouponAdDetailState();
 }
 
-class _CodeQrDetailState extends State<CodeQrDetail> {
-
+class _CouponAdDetailState extends State<CouponAdDetail> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -39,7 +31,7 @@ class _CodeQrDetailState extends State<CodeQrDetail> {
           Positioned(
             top: -100,
             child: Hero(
-              tag: 'code_qr',
+              tag: 'detail_coupon',
               child: Container(
                   width: radius,
                   height: radius,
@@ -48,7 +40,7 @@ class _CodeQrDetailState extends State<CodeQrDetail> {
                       image: new DecorationImage(
                           fit: BoxFit.cover,
                           image: new NetworkImage(
-                              widget.codeQrDetailModel.urlQr)))),
+                              widget.couponAdDetailModel.urlImg)))),
             ),
           ),
           Container(
@@ -61,7 +53,7 @@ class _CodeQrDetailState extends State<CodeQrDetail> {
                 Row(
                   children: <Widget>[
                     Expanded(
-                      child: Text(widget.codeQrDetailModel.title),
+                      child: Text(widget.couponAdDetailModel.title),
                     ),
                     Icon(Icons.favorite)
                   ],
@@ -73,7 +65,7 @@ class _CodeQrDetailState extends State<CodeQrDetail> {
                   children: <Widget>[
                     Expanded(
                       child: Text(
-                        widget.codeQrDetailModel.discount,
+                        widget.couponAdDetailModel.discount,
                         style: TextStyle(fontSize: 30, color: Colors.orange),
                       ),
                     ),
@@ -83,8 +75,7 @@ class _CodeQrDetailState extends State<CodeQrDetail> {
                 SizedBox(
                   height: 20,
                 ),
-                Text(
-                    widget.codeQrDetailModel.description),
+                Text(widget.couponAdDetailModel.description),
                 Row(
                   children: <Widget>[
                     Icon(Icons.calendar_today),
@@ -93,6 +84,16 @@ class _CodeQrDetailState extends State<CodeQrDetail> {
                         children: <Widget>[
                           Text(
                             "Expira",
+                            textAlign: TextAlign.left,
+                          ),
+                          Text(
+                            widget.couponAdDetailModel.dateExpire.day.toString() +
+                                " " +
+                                widget.couponAdDetailModel.dateExpire.month
+                                    .toString() +
+                                " " +
+                                widget.couponAdDetailModel.dateExpire.year
+                                    .toString(),
                             textAlign: TextAlign.left,
                           )
                         ],

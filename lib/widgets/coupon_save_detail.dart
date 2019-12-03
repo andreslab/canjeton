@@ -1,35 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'coupon_save_item.dart';
 
-class CouponDetailModel {
-  String urlImg;
-  String title;
-  bool isFavorite;
-  String discount;
-  String description;
-  DateTime dateExpire;
-  CouponDetailModel(
-      {this.urlImg,
-      this.title,
-      this.isFavorite,
-      this.discount,
-      this.description,
-      this.dateExpire});
-}
 
-class CouponDetail extends StatefulWidget {
-  final CouponDetailModel couponDetailModel;
+class CouponSaveDetail extends StatefulWidget {
 
-  const CouponDetail({
-    Key key,
-    @required this.couponDetailModel,
-  }) : super(key: key);
+  final CouponSaveModel couponSaveDetailModel;
+
+  const CouponSaveDetail(
+      {Key key,
+      @required this.couponSaveDetailModel,})
+      : super(key: key);
 
   @override
-  _CouponDetailState createState() => _CouponDetailState();
+  _CouponSaveDetailState createState() => _CouponSaveDetailState();
 }
 
-class _CouponDetailState extends State<CouponDetail> {
+class _CouponSaveDetailState extends State<CouponSaveDetail> {
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -45,16 +33,15 @@ class _CouponDetailState extends State<CouponDetail> {
           Positioned(
             top: -100,
             child: Hero(
-              tag: 'detail_coupon',
+              tag: 'code_qr',
               child: Container(
                   width: radius,
                   height: radius,
                   decoration: new BoxDecoration(
-                      shape: BoxShape.circle,
                       image: new DecorationImage(
                           fit: BoxFit.cover,
                           image: new NetworkImage(
-                              widget.couponDetailModel.urlImg)))),
+                              widget.couponSaveDetailModel.urlQr)))),
             ),
           ),
           Container(
@@ -67,7 +54,7 @@ class _CouponDetailState extends State<CouponDetail> {
                 Row(
                   children: <Widget>[
                     Expanded(
-                      child: Text(widget.couponDetailModel.title),
+                      child: Text(widget.couponSaveDetailModel.title),
                     ),
                     Icon(Icons.favorite)
                   ],
@@ -79,7 +66,7 @@ class _CouponDetailState extends State<CouponDetail> {
                   children: <Widget>[
                     Expanded(
                       child: Text(
-                        widget.couponDetailModel.discount,
+                        widget.couponSaveDetailModel.discount,
                         style: TextStyle(fontSize: 30, color: Colors.orange),
                       ),
                     ),
@@ -89,7 +76,8 @@ class _CouponDetailState extends State<CouponDetail> {
                 SizedBox(
                   height: 20,
                 ),
-                Text(widget.couponDetailModel.description),
+                Text(
+                    widget.couponSaveDetailModel.description),
                 Row(
                   children: <Widget>[
                     Icon(Icons.calendar_today),
@@ -98,16 +86,6 @@ class _CouponDetailState extends State<CouponDetail> {
                         children: <Widget>[
                           Text(
                             "Expira",
-                            textAlign: TextAlign.left,
-                          ),
-                          Text(
-                            widget.couponDetailModel.dateExpire.day.toString() +
-                                " " +
-                                widget.couponDetailModel.dateExpire.month
-                                    .toString() +
-                                " " +
-                                widget.couponDetailModel.dateExpire.year
-                                    .toString(),
                             textAlign: TextAlign.left,
                           )
                         ],

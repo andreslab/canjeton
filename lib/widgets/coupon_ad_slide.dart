@@ -1,24 +1,31 @@
-import 'package:canjeton/widgets/coupon_detail.dart';
+import 'package:canjeton/widgets/coupon_ad_detail.dart';
 import 'package:flutter/material.dart';
 
-class CouponSlideModel {
+class CouponAdModel {
   final String title;
+  final String description;
   final String imgName;
   final bool isFavorite;
-  final double discount;
+  final String discount;
   final DateTime dateExpire;
-  CouponSlideModel({this.title, this.imgName, this.isFavorite, this.discount, this.dateExpire});
+  final String urlImg;
+  CouponAdModel({this.title, this.description, this.imgName, this.isFavorite, this.discount, this.dateExpire, this.urlImg});
 }
 
-class CouponSlide extends StatelessWidget {
+class CouponAdSlide extends StatefulWidget {
   
-  final CouponSlideModel couponSlideModel;
+  final CouponAdModel couponAdSlideModel;
 
-  const CouponSlide(
+  const CouponAdSlide(
       {Key key,
-      this.couponSlideModel})
+      this.couponAdSlideModel})
       : super(key: key);
 
+  @override
+  _CouponAdSlideState createState() => _CouponAdSlideState();
+}
+
+class _CouponAdSlideState extends State<CouponAdSlide> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -37,7 +44,7 @@ class CouponSlide extends StatelessWidget {
             children: <Widget>[
               Row(
                 children: <Widget>[
-                  Expanded(child: Text(this.couponSlideModel.title)),
+                  Expanded(child: Text(this.widget.couponAdSlideModel.title)),
                   IconButton(
                     icon: Icon(Icons.favorite),
                     onPressed: () {
@@ -62,12 +69,12 @@ class CouponSlide extends StatelessWidget {
                           image: new DecorationImage(
                               fit: BoxFit.cover,
                               image: new NetworkImage(
-                                  "https://media.metrolatam.com/2019/10/24/capturadepantall-41ce6991af50c8087af5dafb6c0e6785-600x400.jpg")))),
+                                 widget.couponAdSlideModel.urlImg)))),
                 ),
               ),
               Expanded(
                 child: Text(
-                  "-" + this.couponSlideModel.discount.toString(),
+                  "-" + this.widget.couponAdSlideModel.discount.toString(),
                   textAlign: TextAlign.left,
                   style: TextStyle(fontSize: 50, color: Colors.orange),
                 ),
@@ -89,11 +96,11 @@ class CouponSlide extends StatelessWidget {
                         textAlign: TextAlign.left,
                       ),
                       Text(
-                        this.couponSlideModel.dateExpire.day.toString() +
+                        this.widget.couponAdSlideModel.dateExpire.day.toString() +
                             " " +
-                            this.couponSlideModel.dateExpire.month.toString() +
+                            this.widget.couponAdSlideModel.dateExpire.month.toString() +
                             " " +
-                            this.couponSlideModel.dateExpire.year.toString(),
+                            this.widget.couponAdSlideModel.dateExpire.year.toString(),
                         textAlign: TextAlign.left,
                       )
                     ],
@@ -116,7 +123,7 @@ class CouponSlide extends StatelessWidget {
             PageRouteBuilder(
                 opaque: false,
                 pageBuilder: (BuildContext context, _, __) {
-                  return AlertDialog(content: CouponDetail());
+                  return AlertDialog(content: CouponAdDetail(couponAdDetailModel: widget.couponAdSlideModel));
                 }));
       },
     );

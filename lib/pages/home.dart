@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import '../widgets/coupon_slide.dart';
+import '../widgets/coupon_ad_slide.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -9,12 +9,12 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
-  List<CouponSlideModel> data = [
-    CouponSlideModel(title: "", imgName: "", isFavorite: true, discount: 23.2,dateExpire: DateTime.now() ),
-    CouponSlideModel(title: "", imgName: "", isFavorite: true, discount: 23.2,dateExpire: DateTime.now() ),
-    CouponSlideModel(title: "", imgName: "", isFavorite: true, discount: 23.2,dateExpire: DateTime.now() ),
-    CouponSlideModel(title: "", imgName: "", isFavorite: true, discount: 23.2,dateExpire: DateTime.now() ),
-    CouponSlideModel(title: "", imgName: "", isFavorite: true, discount: 23.2,dateExpire: DateTime.now() ),
+  List<CouponAdModel> data = [
+    CouponAdModel(title: "", description: "",imgName: "", isFavorite: true, discount: "23.2",dateExpire: DateTime.now() , urlImg: "https://279340-865961-raikfcquaxqncofqfm.stackpathdns.com/wp-content/uploads/2018/01/receta-hamburguesa-americana.jpeg"),
+    CouponAdModel(title: "", description: "", imgName: "", isFavorite: true, discount: "23.2",dateExpire: DateTime.now() , urlImg: "https://279340-865961-raikfcquaxqncofqfm.stackpathdns.com/wp-content/uploads/2018/01/receta-hamburguesa-americana.jpeg" ),
+    CouponAdModel(title: "", description: "", imgName: "", isFavorite: true, discount: "23.2",dateExpire: DateTime.now(), urlImg: "https://279340-865961-raikfcquaxqncofqfm.stackpathdns.com/wp-content/uploads/2018/01/receta-hamburguesa-americana.jpeg" ),
+    CouponAdModel(title: "", description: "", imgName: "", isFavorite: true, discount: "23.2",dateExpire: DateTime.now(), urlImg: "https://279340-865961-raikfcquaxqncofqfm.stackpathdns.com/wp-content/uploads/2018/01/receta-hamburguesa-americana.jpeg" ),
+    CouponAdModel(title: "", description: "", imgName: "", isFavorite: true, discount: "23.2",dateExpire: DateTime.now(), urlImg: "https://279340-865961-raikfcquaxqncofqfm.stackpathdns.com/wp-content/uploads/2018/01/receta-hamburguesa-americana.jpeg" ),
   ];
   
   @override
@@ -27,11 +27,11 @@ class _HomePageState extends State<HomePage> {
             Container(
               width: size.width * 0.8,
               height: size.height * 0.5,
-              child:
+              child: 
               PageView.builder(
                 itemCount: data.length,
                 itemBuilder: (context, position){
-                  return CouponSlide(couponSlideModel: data[position]);
+                  return CouponAdSlide(couponAdSlideModel: data[position]);
                 },
 
               )
