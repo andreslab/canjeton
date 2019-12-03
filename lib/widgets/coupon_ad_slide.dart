@@ -60,16 +60,16 @@ class _CouponAdSlideState extends State<CouponAdSlide> {
                   ),
                 Center(
                                   child: Container(
-                    width: radius,
-                    height: radius,
+                    width: radius / 1.7,
+                    height: radius / 1.7,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(radius),
                         gradient: LinearGradient(colors: colorBorder)),
                     child: Hero(
                       tag: 'detail_coupon',
                       child: Container(
-                          width: radius / 2,
-                          height: radius / 2,
+                          width: radius / 1.7,
+                          height: radius / 1.7,
                           decoration: new BoxDecoration(
                               shape: BoxShape.circle,
                               image: new DecorationImage(
