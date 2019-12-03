@@ -36,21 +36,18 @@ class _CouponFavoriteState extends State<CouponFavorite> {
                         fit: BoxFit.cover,
                         image: new NetworkImage(
                             widget.couponFavoriteModel.urlImg)))),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text(
-                  widget.couponFavoriteModel.localName,
-                  style: TextStyle(fontSize: 20),
-                ),
-              ],
+            Expanded(
+              child: Text(
+                widget.couponFavoriteModel.localName,
+                style: TextStyle(fontSize: 20),
+              ),
             ),
             Icon(Icons.arrow_forward)
           ],
         ),
       ),
       onTap: () {
-        Navigator.pushNamed(context,"favorite_detail");
+        Navigator.pushNamed(context, "favorite_detail");
       },
     );
   }

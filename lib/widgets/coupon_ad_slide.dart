@@ -9,29 +9,34 @@ class CouponAdModel {
   final String discount;
   final DateTime dateExpire;
   final String urlImg;
-  CouponAdModel({this.title, this.description, this.imgName, this.isFavorite, this.discount, this.dateExpire, this.urlImg});
+  CouponAdModel(
+      {this.title,
+      this.description,
+      this.imgName,
+      this.isFavorite,
+      this.discount,
+      this.dateExpire,
+      this.urlImg});
 }
 
 class CouponAdSlide extends StatefulWidget {
-  
   final CouponAdModel couponAdSlideModel;
 
-  const CouponAdSlide(
-      {Key key,
-      this.couponAdSlideModel})
-      : super(key: key);
+  const CouponAdSlide({Key key, this.couponAdSlideModel}) : super(key: key);
 
   @override
   _CouponAdSlideState createState() => _CouponAdSlideState();
 }
 
 class _CouponAdSlideState extends State<CouponAdSlide> {
+  bool isFavorite;
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final radius = size.width / 2;
     final List<Color> colorBorder = [Colors.orange, Colors.purple];
-
+    isFavorite = widget.couponAdSlideModel.isFavorite;
     return InkWell(
       child: Card(
         elevation: 4.0,
@@ -40,81 +45,101 @@ class _CouponAdSlideState extends State<CouponAdSlide> {
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Row(
-                children: <Widget>[
-                  Expanded(child: Text(this.widget.couponAdSlideModel.title)),
-                  IconButton(
-                    icon: Icon(Icons.favorite),
-                    onPressed: () {
-                      print("add favorite");
-                    },
-                  ),
-                ],
-              ),
-              Container(
-                width: radius,
-                height: radius,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(radius),
-                    gradient: LinearGradient(colors: colorBorder)),
-                child: Hero(
-                  tag: 'detail_coupon',
-                  child: Container(
-                      width: radius / 2,
-                      height: radius / 2,
-                      decoration: new BoxDecoration(
-                          shape: BoxShape.circle,
-                          image: new DecorationImage(
-                              fit: BoxFit.cover,
-                              image: new NetworkImage(
-                                 widget.couponAdSlideModel.urlImg)))),
-                ),
-              ),
-              Expanded(
-                child: Text(
-                  "-" + this.widget.couponAdSlideModel.discount.toString(),
-                  textAlign: TextAlign.left,
-                  style: TextStyle(fontSize: 50, color: Colors.orange),
-                ),
-              ),
-              Expanded(
-                child: Text(
-                  "En la compra del combo Completo",
-                  textAlign: TextAlign.left,
-                ),
-              ),
-              Row(children: [
-                Icon(Icons.calendar_today),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Row(
                     children: <Widget>[
-                      Text(
-                        "Expira",
-                        textAlign: TextAlign.left,
+                      Expanded(
+                          child: Text(this.widget.couponAdSlideModel.title,
+                              style: TextStyle(fontSize: 20))),
+                      Icon(
+                        this.isFavorite
+                            ? Icons.favorite
+                            : Icons.favorite_border,
                       ),
-                      Text(
-                        this.widget.couponAdSlideModel.dateExpire.day.toString() +
-                            " " +
-                            this.widget.couponAdSlideModel.dateExpire.month.toString() +
-                            " " +
-                            this.widget.couponAdSlideModel.dateExpire.year.toString(),
-                        textAlign: TextAlign.left,
-                      )
                     ],
                   ),
+                Center(
+                                  child: Container(
+                    width: radius,
+                    height: radius,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(radius),
+                        gradient: LinearGradient(colors: colorBorder)),
+                    child: Hero(
+                      tag: 'detail_coupon',
+                      child: Container(
+                          width: radius / 2,
+                          height: radius / 2,
+                          decoration: new BoxDecoration(
+                              shape: BoxShape.circle,
+                              image: new DecorationImage(
+                                  fit: BoxFit.cover,
+                                  image: new NetworkImage(
+                                      widget.couponAdSlideModel.urlImg)))),
+                    ),
+                  ),
                 ),
-                IconButton(
-                  icon: Icon(Icons.share),
-                  onPressed: () {
-                    print("share");
-                  },
-                )
-              ])
-            ],
-          ),
+                
+                 Expanded(
+                                    child: Text(
+                      this.widget.couponAdSlideModel.discount,
+                      textAlign: TextAlign.left,
+                      style: TextStyle(fontSize: 50, color: Colors.orange,
+                      backgroundColor: Colors.blue),
+                    ),
+                 ),
+                
+                Expanded(
+                  child: Text(this.widget.couponAdSlideModel.description,
+                      textAlign: TextAlign.left,
+                      style: TextStyle(fontSize: 14)),
+                ),
+                Row(children: [
+                  Icon(Icons.calendar_today),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Text(
+                          "Expira",
+                          textAlign: TextAlign.left,
+                        ),
+                        Text(
+                          this
+                                  .widget
+                                  .couponAdSlideModel
+                                  .dateExpire
+                                  .day
+                                  .toString() +
+                              " " +
+                              this
+                                  .widget
+                                  .couponAdSlideModel
+                                  .dateExpire
+                                  .month
+                                  .toString() +
+                              " " +
+                              this
+                                  .widget
+                                  .couponAdSlideModel
+                                  .dateExpire
+                                  .year
+                                  .toString(),
+                          textAlign: TextAlign.left,
+                        )
+                      ],
+                    ),
+                  ),
+                  IconButton(
+                    icon: Icon(Icons.share),
+                    onPressed: () {
+                      print("share");
+                    },
+                  )
+                ])
+              ],
+            ),
+          
         ),
       ),
       onTap: () {
@@ -123,7 +148,9 @@ class _CouponAdSlideState extends State<CouponAdSlide> {
             PageRouteBuilder(
                 opaque: false,
                 pageBuilder: (BuildContext context, _, __) {
-                  return AlertDialog(content: CouponAdDetail(couponAdDetailModel: widget.couponAdSlideModel));
+                  return AlertDialog(
+                      content: CouponAdDetail(
+                          couponAdDetailModel: widget.couponAdSlideModel));
                 }));
       },
     );

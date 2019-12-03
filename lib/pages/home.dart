@@ -10,11 +10,11 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
 
   List<CouponAdModel> data = [
-    CouponAdModel(title: "", description: "",imgName: "", isFavorite: true, discount: "23.2",dateExpire: DateTime.now() , urlImg: "https://279340-865961-raikfcquaxqncofqfm.stackpathdns.com/wp-content/uploads/2018/01/receta-hamburguesa-americana.jpeg"),
-    CouponAdModel(title: "", description: "", imgName: "", isFavorite: true, discount: "23.2",dateExpire: DateTime.now() , urlImg: "https://279340-865961-raikfcquaxqncofqfm.stackpathdns.com/wp-content/uploads/2018/01/receta-hamburguesa-americana.jpeg" ),
-    CouponAdModel(title: "", description: "", imgName: "", isFavorite: true, discount: "23.2",dateExpire: DateTime.now(), urlImg: "https://279340-865961-raikfcquaxqncofqfm.stackpathdns.com/wp-content/uploads/2018/01/receta-hamburguesa-americana.jpeg" ),
-    CouponAdModel(title: "", description: "", imgName: "", isFavorite: true, discount: "23.2",dateExpire: DateTime.now(), urlImg: "https://279340-865961-raikfcquaxqncofqfm.stackpathdns.com/wp-content/uploads/2018/01/receta-hamburguesa-americana.jpeg" ),
-    CouponAdModel(title: "", description: "", imgName: "", isFavorite: true, discount: "23.2",dateExpire: DateTime.now(), urlImg: "https://279340-865961-raikfcquaxqncofqfm.stackpathdns.com/wp-content/uploads/2018/01/receta-hamburguesa-americana.jpeg" ),
+    CouponAdModel(title: "hamburguesa con queso", description: "lleva queso,tomate y carne",imgName: "", isFavorite: true, discount: "-23%",dateExpire: DateTime.now() , urlImg: "https://279340-865961-raikfcquaxqncofqfm.stackpathdns.com/wp-content/uploads/2018/01/receta-hamburguesa-americana.jpeg"),
+    CouponAdModel(title: "hamburguesa con queso", description: "lleva queso,tomate y carne", imgName: "", isFavorite: false, discount: "-23%",dateExpire: DateTime.now() , urlImg: "https://279340-865961-raikfcquaxqncofqfm.stackpathdns.com/wp-content/uploads/2018/01/receta-hamburguesa-americana.jpeg" ),
+    CouponAdModel(title: "hamburguesa con queso", description: "lleva queso,tomate y carne", imgName: "", isFavorite: true, discount: "-23%",dateExpire: DateTime.now(), urlImg: "https://279340-865961-raikfcquaxqncofqfm.stackpathdns.com/wp-content/uploads/2018/01/receta-hamburguesa-americana.jpeg" ),
+    CouponAdModel(title: "hamburguesa con queso", description: "lleva queso,tomate y carne", imgName: "", isFavorite: true, discount: "-23%",dateExpire: DateTime.now(), urlImg: "https://279340-865961-raikfcquaxqncofqfm.stackpathdns.com/wp-content/uploads/2018/01/receta-hamburguesa-americana.jpeg" ),
+    CouponAdModel(title: "hamburguesa con queso", description: "lleva queso,tomate y carne", imgName: "", isFavorite: false, discount: "-23%",dateExpire: DateTime.now(), urlImg: "https://279340-865961-raikfcquaxqncofqfm.stackpathdns.com/wp-content/uploads/2018/01/receta-hamburguesa-americana.jpeg" ),
   ];
   
   @override

@@ -9,7 +9,11 @@ class CouponSaveModel {
   String description;
   String urlQr;
   CouponSaveModel(
-      {this.urlImgMin, this.title, this.discount, this.description, this.urlQr});
+      {this.urlImgMin,
+      this.title,
+      this.discount,
+      this.description,
+      this.urlQr});
 }
 
 class CouponSaveItem extends StatefulWidget {
@@ -40,20 +44,22 @@ class _CouponSaveItemState extends State<CouponSaveItem> {
                         fit: BoxFit.cover,
                         image: new NetworkImage(
                             widget.couponSaveItemModel.urlImgMin)))),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text(
-                  widget.couponSaveItemModel.title,
-                  style: TextStyle(fontSize: 20),
-                ),
-                Text(
-                  widget.couponSaveItemModel.discount,
-                  style: TextStyle(fontSize: 20, color: Colors.orange),
-                ),
-                Text(widget.couponSaveItemModel.description,
-                    style: TextStyle(fontSize: 15, color: Colors.orange))
-              ],
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text(
+                    widget.couponSaveItemModel.title,
+                    style: TextStyle(fontSize: 20),
+                  ),
+                  Text(
+                    widget.couponSaveItemModel.discount,
+                    style: TextStyle(fontSize: 20, color: Colors.orange),
+                  ),
+                  Text(widget.couponSaveItemModel.description,
+                      style: TextStyle(fontSize: 15, color: Colors.orange))
+                ],
+              ),
             ),
             IconButton(
               icon: Icon(Icons.add),
@@ -70,7 +76,9 @@ class _CouponSaveItemState extends State<CouponSaveItem> {
             PageRouteBuilder(
                 opaque: false,
                 pageBuilder: (BuildContext context, _, __) {
-                  return AlertDialog(content: CouponSaveDetail(couponSaveDetailModel: widget.couponSaveItemModel));
+                  return AlertDialog(
+                      content: CouponSaveDetail(
+                          couponSaveDetailModel: widget.couponSaveItemModel));
                 }));
       },
     );

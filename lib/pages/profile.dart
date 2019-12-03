@@ -12,40 +12,31 @@ class ProfilePage extends StatelessWidget {
           children: <Widget>[
             Text("Profile"),
             Expanded(
-                          child: ListView(
-  padding: const EdgeInsets.all(8),
-  children: <Widget>[
-    Container(
-      
-      height: 120,
-      child: FieldProfile(),
-    ),
-    Container(
-      height: 120,
-      child: FieldProfile(),
-    ),
-    Container(
-      height: 120,
-      child: FieldProfile(),
-    ),
-    Container(
-      height: 120,
-      child: FieldProfile(),
-    ),
-    Container(
-      height: 120,
-      child: FieldProfile(),
-    ),
-    Container(
-      height: 120,
-      child: FieldProfile(),
-    ),
-  ],
-),
+              child: ListView(
+                padding: const EdgeInsets.all(8),
+                children: <Widget>[
+                  Container(
+                    height: 120,
+                    child: FieldProfile(),
+                  ),
+                  Container(
+                    height: 120,
+                    child: FieldProfile(),
+                  ),
+                  Container(
+                    height: 120,
+                    child: FieldProfile(),
+                  ),
+                  Container(
+                    height: 120,
+                    child: FieldProfile(),
+                  ),
+                ],
+              ),
             ),
           ],
         ),
-    ),
+      ),
     );
   }
 }
