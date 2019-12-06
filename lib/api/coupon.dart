@@ -7,27 +7,29 @@ import 'package:meta/meta.dart' show required;
 import '../config.dart';
 import '../utils/session.dart';
 
-class AuthAPI {
+class CouponAPI {
 
   final _session = Session();
   //obtiene una respuesya futura
-  Future<bool> register(BuildContext context, 
-  {@required String name, 
-  @required String email, 
-  @required String password}) async {
-    try {
-      final url = "${AppConfig.apiHost}/api/auth/register";
+  Future<bool> coupons(BuildContext context) async {
 
-      final http.Response response = await http.post(url,
-      body: {
-        "name": name, 
-        "email": email, 
-        "password": password,
-        "password_confirmation": password},
-        headers: {
-          "Content-Type" : "application/x-www-form-urlencoded",
-          "X-Requested-With":"XMLHttpRequest"
-        });
+    Map<String, String> params = {
+        "title": "Cerveza 20perla 20del 20pacifico 20cupon 201", 
+        "description": "Nueva 20presentación", 
+        "value_discount": "10",
+        "given_coupon": "1",
+        "start_date":"2019-11-01 2021:22:29",
+        "end_date":"2019-11-30 2021:22:29",
+        "status":"1",
+        "category_id":"1",
+        "type_discount_id":"1",
+        "business_branch_id":"1"};
+
+    try {
+
+      var uri = Uri.https(AppConfig.apiHost, "/api/auth/coupons", params);
+
+      final http.Response response = await http.get(uri);
 
     
       //final responseString = response.body;

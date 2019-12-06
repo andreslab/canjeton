@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../api/auth.dart';
+import '../api/coupon.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -14,6 +15,7 @@ class _LoginPageState extends State<LoginPage> {
   //key que se agrega al Form para acceder a funciones
   final _formKey = GlobalKey<FormState>();
   final _authAPI = AuthAPI();
+  final _couponAPI = CouponAPI();
 
   var _email = '', _password = '';
   var _isFetching = false;
@@ -43,6 +45,25 @@ class _LoginPageState extends State<LoginPage> {
         Navigator.pushNamed(context, "home");
       }
     }
+  }
+
+  _loginWithoutUser() async{
+    if (_isFetching) return;
+    
+      setState(() {
+        _isFetching = true;
+      });
+      //call request
+      final isOk = await _couponAPI.coupons(context);
+      
+      setState(() {
+        _isFetching = false;
+      });
+      if (isOk){
+        print("LOGIN");
+        Navigator.pushNamed(context, "home");
+      }
+    
   }
 
   @override
@@ -150,7 +171,7 @@ class _LoginPageState extends State<LoginPage> {
                                 padding: EdgeInsets.symmetric(vertical: 17),
                                 color: Colors.orange,
                                 borderRadius: BorderRadius.circular(4),
-                                onPressed: () => Navigator.pushNamed(context, "navigator"),
+                                onPressed: () => _loginWithoutUser(),
                                 child: Text("Ingreso sin credenciales",
                                     style: TextStyle(fontSize: 20)),
                               ),
