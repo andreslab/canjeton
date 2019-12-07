@@ -8,6 +8,7 @@ import 'pages/ticket.dart';
 import 'pages/register_sucess.dart';
 import 'pages/search.dart';
 import 'pages/favorite_detail.dart';
+import 'pages/splash.dart';
 
 void main() => runApp(MyApp());
 
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue
       ),
-      home: LoginPage(),
+      home: SplashPage(),
       routes: {
         "login": (context) => LoginPage(),
         "register": (context) => RegisterPage(),

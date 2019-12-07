@@ -42,27 +42,21 @@ class _LoginPageState extends State<LoginPage> {
       });
       if (isOk){
         print("LOGIN");
-        Navigator.pushNamed(context, "home");
+        Navigator.pushNamed(context, "navigator");
       }
     }
   }
 
   _loginWithoutUser() async{
-    if (_isFetching) return;
     
-      setState(() {
-        _isFetching = true;
-      });
+    print("call coupons");
       //call request
-      final isOk = await _couponAPI.coupons(context);
+    final isOk = await _couponAPI.getCouponsList(context);
       
-      setState(() {
-        _isFetching = false;
-      });
-      if (isOk){
-        print("LOGIN");
-        Navigator.pushNamed(context, "home");
-      }
+    if (isOk){
+      print("LOGIN");
+      Navigator.pushNamed(context, "navigator");
+    }
     
   }
 
