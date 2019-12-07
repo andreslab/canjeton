@@ -16,23 +16,31 @@ class AuthAPI {
   @required String email, 
   @required String password}) async {
     try {
-      final url = "${AppConfig.apiHost}/api/auth/register";
+      
 
-      final http.Response response = await http.post(url,
-      body: {
-        "name": name, 
+       Map<String, String> params = {
+         "name": name, 
         "email": email, 
         "password": password,
-        "password_confirmation": password},
+        "password_confirmation": password};
+
+      var uri = Uri.https(AppConfig.apiHost, "/api/auth/register", params);
+
+      print("REGISTER | URL: " + uri.toString());
+
+      final http.Response response = await http.post(uri,
         headers: {
           "Content-Type" : "application/x-www-form-urlencoded",
           "X-Requested-With":"XMLHttpRequest"
         });
-
     
       //final responseString = response.body;
+      
 
       final parsed = jsonDecode(response.body);
+      print("REQUEST: " + response.request.toString());
+      print("RESPONSE: " + parsed.toString());
+      
 
       if (response.statusCode == 200) {
         final token = parsed["token"] as String;
@@ -67,11 +75,12 @@ class AuthAPI {
 
       final http.Response response = await http.post(url,
       body: {
+        "grant_type": "password",
         "client_id": "2",
-        "client_secret": "In6mJSpHJBOXQg0VH9f561uDsAKEVCOj2Eg2IzO0",
-        "username": email,  
+        "client_secret": "In6mJSpHJBOXQg0VH9f561uDsAKEVCOj2Eg2IzO0",  
+        "username": email,
         "password": password,
-        "scope":""});
+        "score": ""});
     
       //final responseString = response.body;
 
