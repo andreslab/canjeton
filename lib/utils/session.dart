@@ -23,3 +23,29 @@ class Session{
     return null;
   }
 }
+
+class Categories{
+  final key = "CATEGORIES";
+  final storage = new FlutterSecureStorage();
+
+  set(int id, String name, String description, String resourceIdentifier, String order, String status) async{
+    final data = {
+      "id": id,
+      "name": name,
+      "description": description,
+      "resource_identifier": resourceIdentifier,
+      "order": order,
+      "status": status
+
+    };
+    await storage.write(key: key, value: jsonEncode(data));
+  }
+
+  get() async {
+    final result = await storage.read(key: key);
+    if (result != null) {
+      return jsonDecode(result);
+    }
+    return null;
+  }
+}

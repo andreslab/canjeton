@@ -5,6 +5,11 @@ import 'ticket.dart';
 import 'favorite.dart';
 import 'profile.dart';
 
+class DataCoupon{
+  final List dataListCoupon;
+
+  DataCoupon(this.dataListCoupon);
+}
 
 class NavigatorPage extends StatefulWidget {
   @override
@@ -24,32 +29,15 @@ class _NavigatorPageState extends State<NavigatorPage> {
 
   @override
   Widget build(BuildContext context) {
+
+    final DataCoupon args = ModalRoute.of(context).settings.arguments;
+    print("args: " + args.dataListCoupon.toString());
+
     return Scaffold(
-      /*appBar:
-      AppBar(
-          title: const Text('Canjetón'),
-          actions: <Widget>[
-            // action button
-            IconButton(
-              icon: Icon(Icons.search),
-              onPressed: () {
-                print("search");
-              },
-            ),
-            // action button
-            IconButton(
-              icon: Icon(Icons.alarm),
-              onPressed: () {
-               print("alarm");
-              },
-            ),
-            // overflow menu
-          ],
-        ),*/
       body: Column(
         children : [
         CustomAppBar(),
-        Expanded(child: screens[_currentIndex],)
+        Expanded(child: _currentIndex == 0 ? HomePage(listCoupons: args.dataListCoupon,) : screens[_currentIndex],)
          ,]
       ),
       

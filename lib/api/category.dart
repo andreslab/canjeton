@@ -8,7 +8,7 @@ import '../utils/session.dart';
 
 class CategoryAPI {
 
-  final _session = Session();
+  final _category = Categories();
 
   Future<bool> getCategoriesList(BuildContext context) async {
 
@@ -25,13 +25,21 @@ class CategoryAPI {
       final parsed = jsonDecode(response.body);
 
       if (response.statusCode == 200) {
-        final token = parsed["token"] as String;
-        final expiresIn = parsed["expiresIn"] as int;
+        final categories = parsed["data"] as List;
         print("response 200: ${response.body}");
+        print("response 200: ${categories.toString()}");
         
-        //save token
-        await _session.set(token, expiresIn);
-
+        //save categories
+        for(var i = 0; i < categories.length; i++) {
+          await _category.set(
+            categories[i]["category_id"],
+            categories[i]["category_name"],
+            categories[i]["category_description"],
+            categories[i]["category_resource_identifier"],
+            categories[i]["category_order"],
+            categories[i]["category_status"]);
+        }
+        
         return true;
       }else if (response.statusCode == 500){
         //lanza excepcion

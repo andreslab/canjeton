@@ -1,3 +1,5 @@
+import 'package:canjeton/pages/navigator.dart';
+
 import '../widgets/input_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -51,11 +53,12 @@ class _LoginPageState extends State<LoginPage> {
     
     print("call coupons");
       //call request
-    final isOk = await _couponAPI.getCouponsList(context);
+    final data = await _couponAPI.getCouponsList(context);
       
-    if (isOk){
-      print("LOGIN");
-      Navigator.pushNamed(context, "navigator");
+    if (data != null){
+      print("LIST COUPON SUCCESS");
+      print(data.toString());
+      Navigator.pushNamed(context, "navigator", arguments: DataCoupon(data));
     }
     
   }

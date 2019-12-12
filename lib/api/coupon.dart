@@ -1,4 +1,6 @@
 import 'dart:convert';
+import 'package:canjeton/api/data_offline.dart';
+
 import '../utils/dialogs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -6,12 +8,13 @@ import 'package:http/http.dart' as http;
 import 'package:meta/meta.dart' show required;
 import '../config.dart';
 import '../utils/session.dart';
+import './coupon.dart';
 
 class CouponAPI {
 
   final _session = Session();
 
-  Future<bool> getCouponsList(BuildContext context) async {
+  Future<List> getCouponsList(BuildContext context) async {
 
     try {
 
@@ -25,15 +28,25 @@ class CouponAPI {
 
       final parsed = jsonDecode(response.body);
 
-      if (response.statusCode == 200) {
-        final token = parsed["token"] as String;
-        final expiresIn = parsed["expiresIn"] as int;
-        print("response 200: ${response.body}");
-        
-        //save token
-        await _session.set(token, expiresIn);
+      
+      const dataOffline = true;
 
-        return true;
+      if (dataOffline) {
+        //DataOffL list = new DataOffL.fromJsonString(DataCanjeton().testJson);
+        //print(list[0].Obj.Title);  // <- now prints "Volvo 140"
+
+        DataOffL list = new DataOffL.fromJsonString(DataCanjeton().dataListCoupon);
+        print(list[0].coupon_title);
+
+        return list.toList();
+      }
+
+      if (response.statusCode == 200) {
+
+        final data = parsed["data"] as List;
+        print("response 200: ${response.body}");
+
+        return data;
       }else if (response.statusCode == 500){
         //lanza excepcion
         throw PlatformException(code: "500", message: parsed["message"]);
@@ -46,7 +59,7 @@ class CouponAPI {
       Dialogs.alert(context, title: "ERROR", message: e.message, onOk: (){
 
       });
-      return false;
+      return null;
     }
   }
 
