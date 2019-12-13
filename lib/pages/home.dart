@@ -35,10 +35,10 @@ class _HomePageState extends State<HomePage> {
     if (widget.listCoupons != null) {
       final dataResponse  = widget.listCoupons;
       for (var i = 0; i < dataResponse.length; i++) {
-        final title = dataResponse[i].coupon_title;
-        final description =  dataResponse[i].coupon_description;
+        final title = dataResponse[i]["coupon_title"];
+        final description =  dataResponse[i]["coupon_description"];
         final isFavorite = true;
-        final discount = dataResponse[i].coupon_value_discount;
+        final discount = dataResponse[i]["coupon_value_discount"];
         data.add( CouponAdModel(
           title: title , 
           description: description,

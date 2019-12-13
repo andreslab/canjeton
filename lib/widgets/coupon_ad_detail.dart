@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'coupon_ad_slide.dart';
+import '../api/favorite.dart';
 
 class CouponAdDetail extends StatefulWidget {
   final CouponAdModel couponAdDetailModel;
@@ -16,6 +17,7 @@ class CouponAdDetail extends StatefulWidget {
 
 class _CouponAdDetailState extends State<CouponAdDetail> {
   bool isFavorite = false;
+  final _favoriteAPI = FavoriteAPI();
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -62,11 +64,7 @@ class _CouponAdDetailState extends State<CouponAdDetail> {
                         icon: this.isFavorite
                             ? Icon(Icons.favorite)
                             : Icon(Icons.favorite_border),
-                        onPressed: () {
-                            setState(() {
-                              this.isFavorite = !this.isFavorite;
-                            });
-                        },
+                        onPressed: () => _saveFavorite(),
                       )
                     ],
                   ),
@@ -125,5 +123,18 @@ class _CouponAdDetailState extends State<CouponAdDetail> {
         ),
       ),
     );
+  }
+
+  _saveFavorite() async {
+    final data = await _favoriteAPI.saveCouponByUser(context, idCoupon: "213", idUser: "4");
+
+      if (data != null) {
+        print("SAVE FAVORITE SUCCESS");
+        print(data.toString());
+      }
+
+      setState(() {
+        this.isFavorite = true;
+      });
   }
 }

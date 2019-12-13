@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:canjeton/api/data_offline.dart';
+//import 'package:canjeton/api/data_offline.dart';
 
 import '../utils/dialogs.dart';
 import 'package:flutter/material.dart';
@@ -8,7 +8,7 @@ import 'package:http/http.dart' as http;
 import 'package:meta/meta.dart' show required;
 import '../config.dart';
 import '../utils/session.dart';
-import './coupon.dart';
+//import './coupon.dart';
 
 class CouponAPI {
 
@@ -29,8 +29,7 @@ class CouponAPI {
       final parsed = jsonDecode(response.body);
 
       
-      const dataOffline = true;
-
+      /*const dataOffline = true;
       if (dataOffline) {
         //DataOffL list = new DataOffL.fromJsonString(DataCanjeton().testJson);
         //print(list[0].Obj.Title);  // <- now prints "Volvo 140"
@@ -39,13 +38,12 @@ class CouponAPI {
         print(list[0].coupon_title);
 
         return list.toList();
-      }
+      }*/
 
       if (response.statusCode == 200) {
 
         final data = parsed["data"] as List;
         print("response 200: ${response.body}");
-
         return data;
       }else if (response.statusCode == 500){
         //lanza excepcion
