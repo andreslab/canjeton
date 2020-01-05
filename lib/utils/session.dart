@@ -28,7 +28,7 @@ class Categories{
   final key = "CATEGORIES";
   final storage = new FlutterSecureStorage();
 
-  set(int id, String name, String description, String resourceIdentifier, String order, String status) async{
+  set(int id, String name, String description, String resourceIdentifier, int order, String status) async{
     final data = {
       "id": id,
       "name": name,

@@ -15,7 +15,7 @@ class ResourcesAPI {
 
     try {
 
-      var uri = Uri.https(AppConfig.apiHost, "/api/v1/resources");
+      var uri = Uri.http(AppConfig.apiHost, "/api/v1/resources");
 
       final http.Response response = await http.get(uri);
     
@@ -55,7 +55,7 @@ class ResourcesAPI {
 
     try {
 
-      var uri = Uri.https(AppConfig.apiHost, "/api/v1/resources/{$id}");
+      var uri = Uri.http(AppConfig.apiHost, "/api/v1/resources/{$id}");
 
       final http.Response response = await http.get(uri);
     

@@ -14,7 +14,7 @@ class CategoryAPI {
 
     try {
 
-      var uri = Uri.https(AppConfig.apiHost, "/api/v1/categories");
+      var uri = Uri.http(AppConfig.apiHost, "/api/v1/categories");
 
       final http.Response response = await http.get(uri);
     

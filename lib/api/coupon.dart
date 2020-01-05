@@ -18,7 +18,7 @@ class CouponAPI {
 
     try {
 
-      var uri = Uri.https(AppConfig.apiHost, "/api/v1/coupons");
+      var uri = Uri.http(AppConfig.apiHost, "/api/v1/coupons");
 
       final http.Response response = await http.get(uri);
     
@@ -66,7 +66,7 @@ class CouponAPI {
 
     try {
 
-      var uri = Uri.https(AppConfig.apiHost, "/api/v1/coupons/{$id}");
+      var uri = Uri.http(AppConfig.apiHost, "/api/v1/coupons/{$id}");
 
       final http.Response response = await http.get(uri);
     
@@ -161,7 +161,7 @@ class CouponAPI {
 
     try {
 
-      var uri = Uri.https(AppConfig.apiHost, "/api/auth/coupons", params);
+      var uri = Uri.http(AppConfig.apiHost, "/api/auth/coupons", params);
 
       final http.Response response = await http.get(uri);
 
