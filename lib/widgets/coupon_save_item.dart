@@ -1,3 +1,5 @@
+import 'package:canjeton/utils/color.dart';
+import 'package:canjeton/utils/icons/fa_solid_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'coupon_save_detail.dart';
@@ -33,17 +35,25 @@ class _CouponSaveItemState extends State<CouponSaveItem> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      child: Padding(
-        padding: const EdgeInsets.only(left: 25, right: 25, top: 10, bottom: 10),
+      child: Container(
+        height: 135,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("res/img/img_bg_coupon.png"),
+            fit: BoxFit.fill,
+          ),
+        ),
+        padding: const EdgeInsets.only(left: 45, right: 45, top: 25, bottom: 25),
         child: Container(
-          height: 150,
-          child: CustomPaint(
-            painter: CouponPainter(isAdCoupon: false),
-                      child: Row(
+          child: /*CustomPaint(
+            painter: CouponPainter(isAdCoupon: false),*/
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Container(
-                    width: 80,
-                    height: 80,
+                    width: 60,
+                    height: 60,
                     decoration: new BoxDecoration(
                         shape: BoxShape.circle,
                         image: new DecorationImage(
@@ -60,22 +70,22 @@ class _CouponSaveItemState extends State<CouponSaveItem> {
                       ),
                       Text(
                         widget.couponSaveItemModel.discount,
-                        style: TextStyle(fontSize: 20, color: Colors.orange),
+                        style: TextStyle(fontSize: 20, color: ColorsApp.colorP),
                       ),
                       Text(widget.couponSaveItemModel.description,
-                          style: TextStyle(fontSize: 15, color: Colors.orange))
+                          style: TextStyle(fontSize: 15, color: ColorsApp.colorP))
                     ],
                   ),
                 ),
                 IconButton(
-                  icon: Icon(Icons.add),
+                  icon: Icon(FaSolid.plus_circle, color: ColorsApp.colorP),
                   onPressed: () {
                     print("");
                   },
                 )
               ],
             ),
-          ),
+          
         ),
       ),
       onTap: () {
@@ -85,6 +95,7 @@ class _CouponSaveItemState extends State<CouponSaveItem> {
                 opaque: false,
                 pageBuilder: (BuildContext context, _, __) {
                   return AlertDialog(
+                    backgroundColor: Colors.transparent,
                       content: CouponSaveDetail(
                           couponSaveDetailModel: widget.couponSaveItemModel));
                 }));

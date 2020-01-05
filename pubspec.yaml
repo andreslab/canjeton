@@ -31,7 +31,9 @@ dev_dependencies:
   http: ^0.12.0+2
   flutter_secure_storage: ^3.3.1+1
   json_object_lite: ^2.1.0
-  material_design_icons_flutter: ^3.4.4795
+  #material_design_icons_flutter: ^3.4.4795
+  carousel_slider: ^1.4.0
+  material_segmented_control: ^2.0.4
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -49,6 +51,10 @@ flutter:
     - res/img/img_hamb.jpg
     - res/img/img_logo_min.png
     - res/img/img_logo.png
+    - res/img/img_bg_ad_slide.png
+    - res/img/img_bg_coupon.png
+    - res/img/img_title_canjeton.png
+    - res/img/img_bg_ticket_detail.png
   #  - images/a_dot_burr.jpeg
   #  - images/a_dot_ham.jpeg
 

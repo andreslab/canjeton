@@ -15,6 +15,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.5"
+  carousel_slider:
+    dependency: "direct dev"
+    description:
+      name: carousel_slider
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.4.0"
   charcode:
     dependency: transitive
     description:
@@ -81,13 +88,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.12.5"
-  material_design_icons_flutter:
+  material_segmented_control:
     dependency: "direct dev"
     description:
-      name: material_design_icons_flutter
+      name: material_segmented_control
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.4.4795"
+    version: "2.0.9"
   meta:
     dependency: transitive
     description:
@@ -179,4 +186,3 @@ packages:
     version: "2.0.8"
 sdks:
   dart: ">=2.2.2 <3.0.0"
-  flutter: ">=0.1.2"

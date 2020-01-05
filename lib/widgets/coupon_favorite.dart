@@ -1,4 +1,5 @@
 import 'package:canjeton/pages/favorite_detail.dart';
+import 'package:canjeton/utils/icons/fa_solid_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -24,26 +25,29 @@ class _CouponFavoriteState extends State<CouponFavorite> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      child: Container(
-        child: Row(
-          children: <Widget>[
-            Container(
-                width: 80,
-                height: 80,
-                decoration: new BoxDecoration(
-                    shape: BoxShape.circle,
-                    image: new DecorationImage(
-                        fit: BoxFit.cover,
-                        image: new NetworkImage(
-                            widget.couponFavoriteModel.urlImg)))),
-            Expanded(
-              child: Text(
-                widget.couponFavoriteModel.localName,
-                style: TextStyle(fontSize: 20),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Container(
+          child: Row(
+            children: <Widget>[
+              Container(
+                  width: 80,
+                  height: 80,
+                  decoration: new BoxDecoration(
+                      shape: BoxShape.circle,
+                      image: new DecorationImage(
+                          fit: BoxFit.cover,
+                          image: new NetworkImage(
+                              widget.couponFavoriteModel.urlImg)))),
+              Expanded(
+                child: Text(
+                  widget.couponFavoriteModel.localName,
+                  style: TextStyle(fontSize: 20),
+                ),
               ),
-            ),
-            Icon(Icons.arrow_forward)
-          ],
+              Icon(FaSolid.chevron_right)
+            ],
+          ),
         ),
       ),
       onTap: () {

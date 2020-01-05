@@ -42,15 +42,24 @@ class _CouponAdSlideState extends State<CouponAdSlide> {
     final List<Color> colorBorder = [Colors.orange, Colors.purple];
     isFavorite = widget.couponAdSlideModel.isFavorite;
     return InkWell(
-      child: CustomPaint(
-        painter: CouponPainter(isAdCoupon: true),
+      child: 
+      Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("res/img/img_bg_ad_slide.png"),
+            fit: BoxFit.fill,
+          ),
+        ),
+      /*CustomPaint(
+        painter: CouponPainter(isAdCoupon: true),*/
         /*elevation: 4.0,
         shape:
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),*/
-        child: Padding(
-          padding: const EdgeInsets.all(20.0),
+        child: Container(
+          margin: EdgeInsets.all(45),
           child: Column(
               children: <Widget>[
+                SizedBox(height: 10,),
                 Row(
                     children: <Widget>[
                       Expanded(
@@ -158,6 +167,7 @@ class _CouponAdSlideState extends State<CouponAdSlide> {
                 opaque: false,
                 pageBuilder: (BuildContext context, _, __) {
                   return AlertDialog(
+                    backgroundColor: Colors.transparent,
                       content: CouponAdDetail(
                           couponAdDetailModel: widget.couponAdSlideModel));
                 }));

@@ -1,5 +1,6 @@
 import 'package:canjeton/utils/color.dart';
 import 'package:canjeton/utils/icons/fa_brands_icons.dart';
+import 'package:canjeton/utils/icons/fa_regular_icons.dart';
 import 'package:canjeton/utils/icons/fa_solid_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
@@ -50,19 +51,19 @@ class _NavigatorPageState extends State<NavigatorPage> {
         type: BottomNavigationBarType.fixed,
         items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home, color: _currentIndex==0 ? ColorsApp.colorP: Colors.grey,),
+            icon: Icon(FaSolid.home, color: _currentIndex==0 ? ColorsApp.colorP: Colors.grey,),
             title: Text(""),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.shop, color: _currentIndex==1 ? ColorsApp.colorP: Colors.grey,),
+            icon: Icon(FaSolid.ticket_alt, color: _currentIndex==1 ? ColorsApp.colorP: Colors.grey,),
             title: Text(""),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.favorite, color: _currentIndex==2 ? ColorsApp.colorP: Colors.grey,),
+            icon: Icon(FaRegular.star, color: _currentIndex==2 ? ColorsApp.colorP: Colors.grey,),
             title: Text(""),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.people, color: _currentIndex==3 ? ColorsApp.colorP: Colors.grey,),
+            icon: Icon(FaRegular.user, color: _currentIndex==3 ? ColorsApp.colorP: Colors.grey,),
             title: Text(""),
           ),
         ],
@@ -130,11 +131,7 @@ class CustomAppBar extends StatelessWidget {
               ),
             ),
             Expanded(
-              child: Text(
-                "Canjeton",
-                textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 20),
-              ),
+              child: Image.asset("res/img/img_title_canjeton.png")
             ),
             Container(
               width: 50,

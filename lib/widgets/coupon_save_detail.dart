@@ -21,6 +21,12 @@ class _CouponSaveDetailState extends State<CouponSaveDetail> {
     final radius = size.width / 2;
 
     return Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("res/img/img_bg_ticket_detail.png"),
+            fit: BoxFit.fill,
+          ),
+        ),
       height: size.height / 3.5,
       width: size.width / 1.6,
       child: Center(
