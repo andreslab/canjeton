@@ -1,3 +1,6 @@
+import 'package:canjeton/utils/color.dart';
+import 'package:canjeton/utils/icons/fa_brands_icons.dart';
+import 'package:canjeton/utils/icons/fa_solid_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'home.dart';
@@ -47,19 +50,19 @@ class _NavigatorPageState extends State<NavigatorPage> {
         type: BottomNavigationBarType.fixed,
         items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: Icon(Icons.home, color: _currentIndex==0 ? ColorsApp.colorP: Colors.grey,),
             title: Text(""),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.shop),
+            icon: Icon(Icons.shop, color: _currentIndex==1 ? ColorsApp.colorP: Colors.grey,),
             title: Text(""),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.favorite),
+            icon: Icon(Icons.favorite, color: _currentIndex==2 ? ColorsApp.colorP: Colors.grey,),
             title: Text(""),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.people),
+            icon: Icon(Icons.people, color: _currentIndex==3 ? ColorsApp.colorP: Colors.grey,),
             title: Text(""),
           ),
         ],
@@ -110,23 +113,40 @@ class CustomAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     final double statusBarSize = MediaQuery.of(context).padding.top;
     return Container(
-        padding: EdgeInsets.only(top: statusBarSize),
+        padding: EdgeInsets.only(top:statusBarSize, left:20, right: 20),
         height: sizeBar + statusBarSize,
         child: Row(
           children: <Widget>[
-            IconButton(
-              icon: Icon(Icons.add_circle),
-              onPressed: () => print(""),
+            Container(
+              width: 50,
+              height: 50,
+              decoration: BoxDecoration(
+                  color: ColorsApp.colorP,
+                  borderRadius: BorderRadius.all(Radius.circular(25))),
+              child: IconButton(
+                icon: Icon(FaSolid.adjust),
+                color: Colors.white,
+                onPressed: () => print(""),
+              ),
             ),
             Expanded(
               child: Text(
                 "Canjeton",
                 textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 20),
               ),
             ),
-            IconButton(
-              icon: Icon(Icons.search),
-              onPressed: () => Navigator.pushNamed(context, "search"),
+            Container(
+              width: 50,
+              height: 50,
+              decoration: BoxDecoration(
+                  color: ColorsApp.colorP,
+                  borderRadius: BorderRadius.all(Radius.circular(25))),
+              child: IconButton(
+                icon: Icon(FaSolid.search),
+                color: Colors.white,
+                onPressed: () => Navigator.pushNamed(context, "search"),
+              ),
             ),
           ],
         ));

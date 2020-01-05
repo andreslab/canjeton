@@ -1,3 +1,4 @@
+import 'package:canjeton/utils/color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import '../widgets/coupon_ad_slide.dart';
@@ -53,6 +54,10 @@ class _HomePageState extends State<HomePage> {
         children: [
           Column(
             children: <Widget>[
+              Text("MÁS POPULARES",
+              textAlign: TextAlign.start,
+              style: TextStyle(fontSize: 15, color: ColorsApp.colorP),),
+              SizedBox(height: 20,),
               Container(
                   width: size.width * 0.8,
                   height: size.height * 0.5,
@@ -78,19 +83,18 @@ class _HomePageState extends State<HomePage> {
                             child: Text(
                           "Categoria",
                           textAlign: TextAlign.left,
-                          style: TextStyle(fontSize: 40),
+                          style: TextStyle(fontSize: 20),
                         )),
-                        RaisedButton(
-                          child: Icon(Icons.category),
-                          onPressed: () => {
+                        IconButton(icon: Icon(Icons.category),
+                        onPressed: () => {
                             showBottomSheet(
                                 context: context,
                                 builder: (context) => Container(
                                       color: Colors.grey[900],
                                       height: 250,
                                     ))
-                          },
-                        )
+                          },)
+                        
                       ],
                     )),
                     Container(

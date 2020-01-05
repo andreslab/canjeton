@@ -1,5 +1,9 @@
+import 'package:canjeton/utils/color.dart';
+import 'package:canjeton/utils/icons/fa_regular_icons.dart';
+import 'package:canjeton/utils/icons/fa_solid_icons.dart';
 import 'package:canjeton/widgets/coupon_ad_detail.dart';
 import 'package:flutter/material.dart';
+import '../utils/shape.dart';
 
 class CouponAdModel {
   final String title;
@@ -38,12 +42,13 @@ class _CouponAdSlideState extends State<CouponAdSlide> {
     final List<Color> colorBorder = [Colors.orange, Colors.purple];
     isFavorite = widget.couponAdSlideModel.isFavorite;
     return InkWell(
-      child: Card(
-        elevation: 4.0,
+      child: CustomPaint(
+        painter: CouponPainter(isAdCoupon: true),
+        /*elevation: 4.0,
         shape:
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),*/
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(20.0),
           child: Column(
               children: <Widget>[
                 Row(
@@ -53,11 +58,13 @@ class _CouponAdSlideState extends State<CouponAdSlide> {
                               style: TextStyle(fontSize: 20))),
                       Icon(
                         this.isFavorite
-                            ? Icons.favorite
-                            : Icons.favorite_border,
+                            ? FaSolid.star
+                            : FaRegular.star,
+                            color: ColorsApp.colorP,
                       ),
                     ],
                   ),
+                  SizedBox(height: 10,),
                 Center(
                                   child: Container(
                     width: radius / 1.7,
@@ -84,8 +91,7 @@ class _CouponAdSlideState extends State<CouponAdSlide> {
                                     child: Text(
                       this.widget.couponAdSlideModel.discount,
                       textAlign: TextAlign.left,
-                      style: TextStyle(fontSize: 50, color: Colors.orange,
-                      backgroundColor: Colors.blue),
+                      style: TextStyle(fontSize: 50, color: ColorsApp.colorP),
                     ),
                  ),
                 
@@ -95,7 +101,8 @@ class _CouponAdSlideState extends State<CouponAdSlide> {
                       style: TextStyle(fontSize: 14)),
                 ),
                 Row(children: [
-                  Icon(Icons.calendar_today),
+                  Icon(FaRegular.calendar_alt,color: ColorsApp.colorP,),
+                  SizedBox(width: 10,),
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -103,7 +110,9 @@ class _CouponAdSlideState extends State<CouponAdSlide> {
                         Text(
                           "Expira",
                           textAlign: TextAlign.left,
+                          style: TextStyle(fontSize: 12, color: ColorsApp.colorP),
                         ),
+        
                         Text(
                           this
                                   .widget
@@ -131,7 +140,7 @@ class _CouponAdSlideState extends State<CouponAdSlide> {
                     ),
                   ),
                   IconButton(
-                    icon: Icon(Icons.share),
+                    icon: Icon(Icons.share, color: ColorsApp.colorP,),
                     onPressed: () {
                       print("share");
                     },

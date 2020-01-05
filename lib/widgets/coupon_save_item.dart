@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'coupon_save_detail.dart';
+import '../utils/shape.dart';
 
 class CouponSaveModel {
   String urlImgMin;
@@ -37,7 +38,7 @@ class _CouponSaveItemState extends State<CouponSaveItem> {
         child: Container(
           height: 150,
           child: CustomPaint(
-            painter: CouponPainter(),
+            painter: CouponPainter(isAdCoupon: false),
                       child: Row(
               children: <Widget>[
                 Container(
@@ -89,44 +90,5 @@ class _CouponSaveItemState extends State<CouponSaveItem> {
                 }));
       },
     );
-  }
-}
-
-class CouponPainter extends CustomPainter {
-  @override
-  void paint(Canvas canvas, Size size) {
-    var paint = Paint();
-    // TODO: Set properties to paint
-    paint.color = Colors.green[800];
-    paint.style = PaintingStyle.stroke;
-    paint.strokeWidth = 4.0;
-
-
-    var path = Path();
-    
-    //border left
-    path.lineTo(0.0, size.height * 0.25);
-    path.quadraticBezierTo(size.width * 0.12, size.height * 0.5, 0.0, size.height * 0.75);
-    path.lineTo(0.0, size.height);
-    //bottom line
-    path.lineTo(size.width, size.height);
-    //border right
-    path.lineTo(size.width, size.height * 0.75);
-    path.quadraticBezierTo(size.width * 0.88, size.height * 0.50, size.width, size.height * 0.25);
-    path.lineTo(size.width, 0.0);
-
-    //top line
-    path.lineTo(0, 0);
-
-
-
-    // TODO: Draw your path
-
-    canvas.drawPath(path, paint);
-  }
-
-  @override
-  bool shouldRepaint(CustomPainter oldDelegate) {
-    return true;
   }
 }
