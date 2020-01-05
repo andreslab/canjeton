@@ -80,7 +80,14 @@ class _RegisterPageState extends State<RegisterPage> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
-                        Column(
+                        Container(
+                          width: 120,
+                          height: 120,
+                          margin: EdgeInsets.only(top: size.width * 0.3),
+                          child: Image.asset("res/img/img_logo_min.png"),
+                        ),
+
+                        /*Column(
                           children: <Widget>[
                             Container(
                                 width: 90,
@@ -94,7 +101,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                           color: Colors.black26, blurRadius: 25)
                                     ])),
                           ],
-                        ),
+                        ),*/
                         Column(
                           children: <Widget>[
                             ConstrainedBox(

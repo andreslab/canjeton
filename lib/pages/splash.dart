@@ -25,7 +25,9 @@ class SplashPage extends StatelessWidget {
 
     return Scaffold(
       body: Center(
-        child: Container(),
+        child: Container(
+          child: Image.asset("res/img/img_logo.png"),
+        ),
       ),
     );
   }

@@ -1,4 +1,5 @@
 import 'package:canjeton/pages/navigator.dart';
+import 'package:canjeton/utils/color.dart';
 
 import '../widgets/input_text.dart';
 import 'package:flutter/cupertino.dart';
@@ -6,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../api/auth.dart';
 import '../api/coupon.dart';
+import '../widgets/gradient_button.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -13,7 +15,6 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-
   //key que se agrega al Form para acceder a funciones
   final _formKey = GlobalKey<FormState>();
   final _authAPI = AuthAPI();
@@ -23,44 +24,42 @@ class _LoginPageState extends State<LoginPage> {
   var _isFetching = false;
 
   @override
-  void initState(){
+  void initState() {
     super.initState();
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
   }
 
-  _submit() async{
+  _submit() async {
     if (_isFetching) return;
     final isValid = _formKey.currentState.validate();
-    if (isValid){
-
+    if (isValid) {
       setState(() {
         _isFetching = true;
       });
       //call request
-      final isOk = await _authAPI.login(context, email : _email, password: _password);
-      
+      final isOk =
+          await _authAPI.login(context, email: _email, password: _password);
+
       setState(() {
         _isFetching = false;
       });
-      if (isOk){
+      if (isOk) {
         print("LOGIN");
         Navigator.pushNamed(context, "navigator");
       }
     }
   }
 
-  _loginWithoutUser() async{
-    
+  _loginWithoutUser() async {
     print("call coupons");
-      //call request
+    //call request
     final data = await _couponAPI.getCouponsList(context);
-      
-    if (data != null){
+
+    if (data != null) {
       print("LIST COUPON SUCCESS");
       print(data.toString());
       Navigator.pushNamed(context, "navigator", arguments: DataCoupon(data));
     }
-    
   }
 
   @override
@@ -71,20 +70,19 @@ class _LoginPageState extends State<LoginPage> {
     // TODO: implement build
     return Scaffold(
       body: GestureDetector(
-        onTap: (){
+        onTap: () {
           //cuando le da tap fuera del teclado
           FocusScope.of(context).requestFocus(FocusNode());
         },
-              child: Container(
+        child: Container(
           width: size.width,
           height: size.height,
           child: Stack(
             children: <Widget>[
               Positioned(
-                right: -size.width * 0.25,
-                top: -size.width * 0.36,
-                child: Container()
-              ),
+                  right: -size.width * 0.25,
+                  top: -size.width * 0.36,
+                  child: Container()),
               Positioned(
                 left: -size.width * 0.35,
                 top: -size.width * 0.34,
@@ -98,7 +96,14 @@ class _LoginPageState extends State<LoginPage> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
-                        Column(
+                        Container(
+                          width: 120,
+                          height: 120,
+                          margin: EdgeInsets.only(top: size.width * 0.3),
+                          child: Image.asset("res/img/img_logo_min.png"),
+                        ),
+
+                        /*Column(
                           children: <Widget>[
                             Container(
                                 width: 90,
@@ -111,98 +116,149 @@ class _LoginPageState extends State<LoginPage> {
                                       BoxShadow(
                                           color: Colors.black26, blurRadius: 25)
                                     ])),
-                            /*Text("Hello again. \nWelcome back",
+                            Text("Hello again. \nWelcome back",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
-                                    fontSize: 18, fontWeight: FontWeight.w300)),*/
+                                    fontSize: 18, fontWeight: FontWeight.w300)),
                           ],
-                        ),
+                        ),*/
                         Column(
                           children: <Widget>[
                             ConstrainedBox(
-                              constraints:
-                                  BoxConstraints(maxWidth: 350, minWidth: 350),
-                              child: Form(
-                                key: _formKey,
-                                                              child: Column(children: <Widget>[
-                                  InputText(label: "Correo electrónico",
-                                  validator: (String text) {
-                                    if (text.contains("@")) {
-                                      _email = text;
-                                      return null;
-                                    }
-                                    return "Correo inválido";
-                                    },
-                                    inputType: TextInputType.emailAddress,),
-                                  SizedBox(height: 20,),
-                                  InputText(label: "Contraseña",
-                                  validator: (String text) {
-                                     if (text.isNotEmpty && text.length > 5) {
-                                      _password = text;
-                                      return null;
-                                    }
-                                    return "Contraseña invalida";
-                                  },
-                                  isSecure: true,)
-                                ],),
-                              )
+                                constraints: BoxConstraints(
+                                    maxWidth: 350, minWidth: 350),
+                                child: Form(
+                                  key: _formKey,
+                                  child: Column(
+                                    children: <Widget>[
+                                      InputText(
+                                        label: "Correo electrónico",
+                                        validator: (String text) {
+                                          if (text.contains("@")) {
+                                            _email = text;
+                                            return null;
+                                          }
+                                          return "Correo inválido";
+                                        },
+                                        inputType: TextInputType.emailAddress,
+                                      ),
+                                      SizedBox(
+                                        height: 20,
+                                      ),
+                                      InputText(
+                                        label: "Contraseña",
+                                        validator: (String text) {
+                                          if (text.isNotEmpty &&
+                                              text.length > 5) {
+                                            _password = text;
+                                            return null;
+                                          }
+                                          return "Contraseña invalida";
+                                        },
+                                        isSecure: true,
+                                      )
+                                    ],
+                                  ),
+                                )),
+                            SizedBox(
+                              height: 20,
                             ),
-                            SizedBox(height: 40,),
                             ConstrainedBox(
-                              constraints:
-                                  BoxConstraints(maxWidth: 350, minWidth: 350),
-                              child: CupertinoButton(
+                                constraints: BoxConstraints(
+                                    maxWidth: 350, minWidth: 350),
+                                child:
+                                    /*CupertinoButton(
                                 padding: EdgeInsets.symmetric(vertical: 17),
                                 color: Colors.orange,
                                 borderRadius: BorderRadius.circular(4),
                                 onPressed: () => _submit(),
                                 child: Text("Ingresar",
                                     style: TextStyle(fontSize: 20)),
-                              ),
+                              ),*/
+                                    RaisedGradientButton(
+                                  borderRadius: 4,
+                                  gradient: ColorsApp.gradientColorPrimary(),
+                                  onPressed:
+                                      () => /*_submit()*/ _loginWithoutUser(),
+                                  child: Text("Ingresar",
+                                      style: TextStyle(fontSize: 15, color: Colors.white)),
+                                )),
+                            SizedBox(
+                              height: 10,
                             ),
-                            SizedBox(height: 20,),
+                            Text(
+                              "o",
+                              textAlign: TextAlign.center,
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
                             ConstrainedBox(
                               constraints:
                                   BoxConstraints(maxWidth: 350, minWidth: 350),
                               child: CupertinoButton(
                                 padding: EdgeInsets.symmetric(vertical: 17),
-                                color: Colors.orange,
+                                color: Colors.blue,
                                 borderRadius: BorderRadius.circular(4),
-                                onPressed: () => _loginWithoutUser(),
-                                child: Text("Ingreso sin credenciales",
-                                    style: TextStyle(fontSize: 20)),
+                                onPressed: () => print("Facebook login"),
+                                child: Text("Ingresar con FACEBOOK",
+                                    style: TextStyle(fontSize: 15)),
                               ),
                             ),
-                            SizedBox(height: 20,),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            ConstrainedBox(
+                              constraints:
+                                  BoxConstraints(maxWidth: 350, minWidth: 350),
+                              child: CupertinoButton(
+                                padding: EdgeInsets.symmetric(vertical: 17),
+                                color: Colors.red,
+                                borderRadius: BorderRadius.circular(4),
+                                onPressed: () => print("Google login"),
+                                child: Text("Ingresar con Google",
+                                    style: TextStyle(fontSize: 15)),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 20,
+                            ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
-                                Text("No posee una cuenta",
-                                style: TextStyle(fontSize: 16,
-                                color: Colors.black54)),
+                                Text("Nuevo usuario?",
+                                    style: TextStyle(
+                                        fontSize: 16, color: Colors.black54)),
                                 CupertinoButton(
                                   child: Text("regístrate",
-                                  style: TextStyle(fontSize: 16, color: Colors.pinkAccent)),
-                                  onPressed: ()=>Navigator.pushNamed(context, "register"),
+                                      style: TextStyle(
+                                          fontSize: 16,
+                                          color: Colors.pinkAccent)),
+                                  onPressed: () =>
+                                      Navigator.pushNamed(context, "register"),
                                 )
                               ],
                             ),
-                            SizedBox(height: size.height*0.03,)
+                            SizedBox(
+                              height: size.height * 0.03,
+                            )
                           ],
                         )
                       ],
                     ),
                   ),
                 ),
-              )
-            ,_isFetching ? Positioned.fill(
-                child: Container(
-                  color: Colors.black45,
-                  child: CupertinoActivityIndicator(
-                    radius: 15,
-                  ),
-                ),
-              ) : Container()
+              ),
+              _isFetching
+                  ? Positioned.fill(
+                      child: Container(
+                        color: Colors.black45,
+                        child: CupertinoActivityIndicator(
+                          radius: 15,
+                        ),
+                      ),
+                    )
+                  : Container()
             ],
           ),
         ),
